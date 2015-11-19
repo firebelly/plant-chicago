@@ -30,6 +30,9 @@ p {
 
 a {
 	color: inherit;
+  &:focus {
+    outline: none;
+  }
 }
 
 img {
