@@ -1,0 +1,36 @@
+{
+  "dependencies": {
+    "main.js": {
+      "files": [
+        "scripts/main.js"
+      ],
+      "main": true
+    },
+    "main.css": {
+      "files": [
+        "styles/main.scss"
+      ],
+      "main": true
+    },
+    "jquery.js": {
+      "bower": ["jquery"]
+    },
+    "modernizr.js": {
+      "bower": ["modernizr"]
+    },
+    "fonts.js": {
+      "files": [
+        "scripts/fonts.js"
+      ]
+    },
+    "respond.js": {
+      "bower": ["respond"]
+    },
+    "svg4everybody.js": {
+      "bower": ["svg4everybody"]
+    }
+  },
+  "config": {
+    "devUrl": "http://plantchicago.dev" 
+  } 
+}

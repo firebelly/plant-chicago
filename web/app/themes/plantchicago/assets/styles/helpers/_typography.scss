@@ -1,0 +1,24 @@
+// Typography
+
+// Fonts
+$sans: 'Karla', Helvetica, sans-serif;
+$serif: Georgia, serif;
+$display: 'HalisR-Black', sans-serif;
+$display-sc: 'HalisR-SBold', sans-serif;
+
+// Sans-specific styles to chunk into one include
+@mixin font-sans() {
+}
+// Serif-specific styles to chunk into one include
+@mixin font-sans() {
+}
+
+// Hide fonts while loading from Typekit
+.wf-loading {
+  visibility: hidden;
+}
+
+//sizes
+$small: 0.5em;
+$med: 1em;
+$big: 3em;

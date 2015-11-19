@@ -1,0 +1,64 @@
+// Nav
+
+// wp admin bar push
+.admin-bar {}
+
+.site-nav {
+  .nav {
+    margin: 0;
+    padding: 0;
+    @include clearfix();
+    li {
+      list-style: none;
+      &.current-menu-item {
+        a {
+          &:after {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    a {
+      transition: color .2s ease-out;
+      // Underline
+      &:after {
+        bottom: 0;
+        left: 12px;
+        opacity: 0;
+        right: 12px;
+        content: '';
+        height: 2px;
+        position: absolute;
+        background: $white;
+        transition: opacity .2s ease-out, background .2s ease-out;
+      }
+
+      &:hover, &:focus {
+        color: $brand-secondary;
+        &:after {
+          opacity: 1;
+          background: $brand-secondary;
+        }
+      }
+    }
+  }
+
+  @include min-screen($breakpoint-medium) {
+    float: right;
+
+    .nav {
+      li {
+        float: left;
+        a {
+          padding: 12px;
+          position: relative;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+// mobile menu toggle
+.menu-toggle {
+}
