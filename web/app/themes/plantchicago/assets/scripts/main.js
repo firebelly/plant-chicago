@@ -27,7 +27,7 @@ var PlantChicago = (function($) {
     // Fit them vids!
     $('main').fitVids();
  
-    // _initNav();
+    _initNav();
     // _initSearch();
     // _initLoadMore();
     _injectSvgSprite();
@@ -96,23 +96,22 @@ var PlantChicago = (function($) {
   // Handles main nav
   function _initNav() {
     // SEO-useless nav toggler
-    $('<div class="menu-toggle"><div class="menu-bar"><span class="sr-only">Menu</span></div></div>')
-      .prependTo('header.banner')
-      .on('click', function(e) {
-        _showMobileNav();
-      });
+    $('.nav-toggle').on('click', function(e) {
+      $('.nav-toggle').toggleClass('nav-open');
+      $('.site-nav').toggleClass('-active');
+    });
     var mobileSearch = $('.search-form').clone().addClass('mobile-search');
     mobileSearch.prependTo('.site-nav');
   }
 
   function _showMobileNav() {
-    $('.menu-toggle').addClass('menu-open');
-    $('.site-nav').addClass('active');
+    $('.nav-toggle').addClass('nav-open');
+    $('.site-nav').addClass('-active');
   }
 
   function _hideMobileNav() {
-    $('.menu-toggle').removeClass('menu-open');
-    $('.site-nav').removeClass('active');
+    $('.nav-toggle').removeClass('nav-open');
+    $('.site-nav').removeClass('-active');
   }
 
   function _initLoadMore() {

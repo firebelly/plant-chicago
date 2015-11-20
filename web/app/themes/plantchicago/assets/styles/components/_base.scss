@@ -17,7 +17,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $display;
+  letter-spacing: .12em;
+  font-family: $display-sc;
+  text-transform: lowercase;
 }
 
 p {
@@ -87,6 +89,9 @@ img {
   }
 
   h2 {
-
+    margin: 0 0 30px;
+    padding-bottom: 30px;
+    border-color: inherit;
+    border-bottom: 2px solid;
   }
 }

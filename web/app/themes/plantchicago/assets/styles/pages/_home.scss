@@ -1,4 +1,17 @@
 // Home page
 
 .home.page {
+  .site-header {
+    &:after {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      content: '';
+      opacity: .75;
+      height: 200px;
+      position: absolute;
+      background-image: linear-gradient(rgba(black,0), $black);
+    }
+  }
 }
