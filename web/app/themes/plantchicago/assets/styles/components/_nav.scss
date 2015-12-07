@@ -4,6 +4,19 @@
 .admin-bar {}
 
 .site-nav {
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 100%;
+  position: absolute;
+  background: $black;
+  padding: 100px 30px 30px;
+  transform: translate3d(100%,0,0);
+  transition: transform .5s cubic-bezier(1,0,.5,1);
+  &.-active {
+    transform: translate3d(0,0,0);
+  }
+
   .nav {
     margin: 0;
     padding: 0;
@@ -19,6 +32,10 @@
       }
     }
     a {
+      display: block;
+      padding: 12px 0;
+      font-size: 18px;
+      text-decoration: none;
       transition: color .2s ease-out;
       // Underline
       &:after {
@@ -44,15 +61,20 @@
   }
 
   @include min-screen($breakpoint-medium) {
-    float: right;
+    width: auto;
+    padding: 18px 0;
+    background: none;
+    position: relative;
+    transform: translate3d(0,0,0);
 
     .nav {
+      margin: 0 -12px;
       li {
         float: left;
         a {
           padding: 12px;
+          font-size: 16px;
           position: relative;
-          text-decoration: none;
         }
       }
     }
@@ -60,14 +82,13 @@
 }
 // mobile menu toggle
 .nav-toggle {
-  top: 0;
+  top: 20px;
   z-index: 1;
   right: 30px;
   width: 60px;
   height: 60px;
   border: none;
   background: none;
-  appearence: none;
   position: absolute;
   -webkit-appearence: none;
   @include min-screen($breakpoint-medium) {

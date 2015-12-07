@@ -1,8 +1,9 @@
 // Header
 
 .site-header {
+  display: flex;
   color: $white;
-  padding: 30px 0;
+  min-height: 160px;
   position: relative;
   background-size: cover;
   background-position: center center;
@@ -13,19 +14,39 @@
     z-index: 0;
     content: '';
     opacity: .75;
-    height: 200px;
+    height: 160px;
     position: absolute;
     background-image: linear-gradient($black,rgba(black,0));
   }
 
   .container {
     z-index: 1;
+    padding: 30px;
     position: relative;
+  }
+
+  .main-column-left {
+    position: absolute;
+  }
+  .main-column-right {
+    position: static;
+  }
+
+  // Style changes when nav is open
+  &.nav-open {
+    .site-title {
+      @include max-screen($breakpoint-medium) {
+        .icon {
+          fill: $brand-primary;
+        }
+      }
+    }
   }
 
   .site-title {
     margin: 0;
-    float: left;
+    z-index: 2;
+    position: relative;
     a {
       height: 0;
       width: 117px;
@@ -48,21 +69,51 @@
       position: absolute;
       transition: fill .2s ease-out;
     }
+
+    @include min-screen($breakpoint-medium) {
+      a {
+        width: 195px;
+        transform-origin: bottom;
+        transform: rotate(90deg) translateX(28px) translateY(34px);
+      }
+    }
+  }
+
+  .header-text {
+    margin-top: 100px;
+
+    h2 {
+      font-size: 30px;
+      line-height: 1.2em;
+    }
+
+    @include min-screen($breakpoint-medium) {
+      left: 0;
+      width: 100%;
+      bottom: 66px;
+      max-width: 70%;
+      position: absolute;
+
+
+      h2 {
+        font-size: 48px;
+      }
+    }
   }
 
   @include min-screen($breakpoint-small) {
   }
 
   @include min-screen($breakpoint-medium) {
-    padding: 40px 0;
     min-height: 732px;
 
-    .site-title {
-      a {
-        width: 195px;
-        transform: rotate(90deg);
-        transform-origin: bottom;
-      }
+    .container {
+      padding: 36px 30px;
+    }
+
+    .main-column-left,
+    .main-column-right {
+      position: relative;
     }
 
   }

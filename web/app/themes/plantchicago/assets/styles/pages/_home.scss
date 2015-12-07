@@ -2,16 +2,27 @@
 
 .home.page {
   .site-header {
-    &:after {
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 0;
-      content: '';
-      opacity: .75;
-      height: 200px;
-      position: absolute;
-      background-image: linear-gradient(rgba(black,0), $black);
+
+    @include min-screen($breakpoint-medium) {
+      &:after {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        content: '';
+        opacity: .75;
+        height: 160px;
+        position: absolute;
+        background-image: linear-gradient(rgba(black,0), $black);
+      }
+    }
+  }
+
+  .site-main {
+    .content-left {
+      h2, h3 {
+        color: $brand-primary;
+      }
     }
   }
 }

@@ -2,6 +2,23 @@
 
 $margin: 1em;
 $padding: 1em;
+$column: 100% * (1 / 12);
+
+// Main column layout
+.main-column-left {
+  position: relative;
+  @include min-screen($breakpoint-medium) {
+    float: left;
+    width: 2 * $column;
+  }
+}
+.main-column-right {
+  position: relative;
+  @include min-screen($breakpoint-medium) {
+    float: left;
+    width: 10 * $column;
+  }
+}
 
 .grid {
   width: 100%;

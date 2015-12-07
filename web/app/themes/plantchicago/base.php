@@ -3,6 +3,7 @@
 use Roots\Sage\Setup;
 use Roots\Sage\Wrapper;
 
+\Firebelly\Utils\page_color();
 ?>
 
 <!doctype html>
@@ -21,8 +22,9 @@ use Roots\Sage\Wrapper;
       get_template_part('templates/header');
     ?>
     <div class="container" role="document">
-      <div class="content row">
-        <main class="site-main" role="main">
+      <div class="content grid">
+        <div class="main-gutter main-column-left"></div>
+        <main class="site-main main-column-right grid" role="main">
           <?php include Wrapper\template_path(); ?>
         </main><!-- /.main -->
         <?php if (Setup\display_sidebar()) : ?>

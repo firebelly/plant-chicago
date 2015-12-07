@@ -107,14 +107,19 @@ function get_page_blocks($post) {
   return $output;
 }
 
-/*
- * Disable the emoji's as of 4.2 per 'Disable Emojis' plugin: https://geek.hellyer.kiwi/plugins/disable-emojis/
+/**
+ * Individual page background colors
  */
-remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-remove_action( 'wp_print_styles', 'print_emoji_styles' );
-remove_action( 'admin_print_styles', 'print_emoji_styles' );  
-remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );  
-remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+function page_color() {  
+  // Set global var to use when creating treated backgrounds
+  if(is_page('tour')) {
+    $color = 'f9beb7';
+  } else if (is_page('learning')) {
+    $color = 'b9e5fa';
+  } else if(is_page('farmers-market')) {
+    $color = 'ffeca9';
+  } else {
+    $color = 'a5dcbc';
+  }
+  define('PAGE_COLOR', $color);
+}

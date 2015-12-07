@@ -47,7 +47,7 @@ function get_header_bg($post_or_image, $thumb_id='') {
     $base_dir = $upload_dir['basedir'] . '/backgrounds/';
 
     // Build treated filename with thumb_id in case there are filename conflicts
-    $treated_filename = preg_replace("/.+\/(.+)\.(\w{2,5})$/", $thumb_id."-$1-a5dcbc.$2", $background_image);
+    $treated_filename = preg_replace("/.+\/(.+)\.(\w{2,5})$/", $thumb_id."-$1-".PAGE_COLOR.".$2", $background_image);
     $treated_image = $base_dir . $treated_filename;
   
     // If treated file doesn't exist, create it
@@ -58,7 +58,7 @@ function get_header_bg($post_or_image, $thumb_id='') {
         mkdir($base_dir);
       }
       $convert_command = (WP_ENV==='development') ? '/usr/local/bin/convert' : '/usr/bin/convert';
-      exec($convert_command.' '.$background_image.' +profile "*" -resize 1400x -quality 65 -colorspace gray -level +10% +level-colors "#414141","#a5dcbc" '.$treated_image);
+      exec($convert_command.' '.$background_image.' +profile "*" -resize 1400x -quality 65 -colorspace gray -level +10% +level-colors "#414141","#'.PAGE_COLOR.'" '.$treated_image);
     }    
     $header_bg = ' style="background-image:url(' . $upload_dir['baseurl'] . '/backgrounds/' . $treated_filename . ');"';
   }

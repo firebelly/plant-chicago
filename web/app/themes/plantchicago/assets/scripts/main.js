@@ -97,7 +97,7 @@ var PlantChicago = (function($) {
   function _initNav() {
     // SEO-useless nav toggler
     $('.nav-toggle').on('click', function(e) {
-      $('.nav-toggle').toggleClass('nav-open');
+      $('.site-header, .nav-toggle').toggleClass('nav-open');
       $('.site-nav').toggleClass('-active');
     });
     var mobileSearch = $('.search-form').clone().addClass('mobile-search');
