@@ -1,0 +1,117 @@
+// UI Components
+
+.btn {
+  padding: 14px;
+  display: block;
+  font-size: 16px;
+  background: none;
+  font-weight: 700;
+  border: 2px solid;
+  line-height: 1.5em;
+  text-align: center;
+  position: relative;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: color .2s ease-out, background .2s ease-out, border-color .2s ease-out;
+  &:hover,
+  &:focus {
+    .arrow {
+      &::after {
+        left: 1px;
+      }
+      &.-long::after {
+        left: -.19em;
+        letter-spacing: .1em;
+      }
+    }
+  }
+  .arrow {
+    top: 50%;
+    margin-left: 10px;
+    position: absolute;
+    transform: translateY(-50%);
+    &:hover,
+    &:focus {
+      &::after {
+        left: -1px;
+      }
+      &.-long::after {
+        left: 0;
+        letter-spacing: 0;
+      }
+    }
+  }
+}
+
+// Button mixin
+@mixin button($color, $background) {
+  @extend .btn;
+  color: $color;
+  border-color: $color;
+  &:hover,
+  &:focus {
+    background: $background;
+    border-color: $background;
+  }
+}
+
+// Arrows
+@mixin arrow($color) {
+  width: 12px;
+  height: 12px;
+  border: none;
+  background: none;
+  position: relative;
+  display: inline-block;
+  &::before,
+  &::after {
+    transition: box-shadow .2s ease-out, color .2s ease-out;
+  }
+  &::before {
+    top: 2px;
+    right: 6px;
+    width: 8px;
+    height: 8px;
+    content: '';
+    position: absolute;
+    transform: rotate(-45deg);
+    box-shadow: 2px 2px 0 $color, 3px 2px 0 $color, 2px 3px 0 $color, 3px 3px 0 $color;
+  }
+  &::after {
+    width: 0;
+    height: 0;
+    left: -1px;
+    bottom: 5px;
+    content: '•';
+    color: $color;
+    line-height: 0;
+    font-size: 14px;
+    position: absolute;
+    transition: left .1s ease-out, bottom .1s ease-out, letter-spacing .1s ease-out;
+  }
+  
+  &.-long {
+    width: 22px;
+    &::after {
+      left: 0;
+      content: '•••';
+      text-align: right;
+    }
+  }
+  
+  &:hover,
+  &:focus {
+    outline: none;
+    &::after {
+      left: 1px;
+    }
+    &.-long::after {
+      left: -.19em;
+      letter-spacing: .1em;
+    }
+  }
+}
+
+.arrow {
+  @include arrow($black);
+}

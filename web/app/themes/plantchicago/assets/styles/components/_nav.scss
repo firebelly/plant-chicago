@@ -6,6 +6,7 @@
 .site-nav {
   top: 0;
   right: 0;
+  bottom: 0;
   z-index: 1;
   width: 100%;
   position: absolute;
@@ -58,6 +59,12 @@
         }
       }
     }
+  }
+
+
+  @include min-screen($breakpoint-small) {
+    width: auto;
+    padding: 100px 100px 30px 30px;
   }
 
   @include min-screen($breakpoint-medium) {

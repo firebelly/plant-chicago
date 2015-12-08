@@ -21,16 +21,18 @@ use Roots\Sage\Wrapper;
       do_action('get_header');
       get_template_part('templates/header');
     ?>
-    <div class="container" role="document">
+    <div class="site-container" role="document">
       <div class="content grid">
         <div class="main-gutter main-column-left"></div>
-        <main class="site-main main-column-right grid" role="main">
-          <?php include Wrapper\template_path(); ?>
+        <main class="site-main main-column-right" role="main">
+          <div class="grid">
+            <?php include Wrapper\template_path(); ?>
+          </div>
         </main><!-- /.main -->
-        <?php if (Setup\display_sidebar()) : ?>
+<!--         <?php if (Setup\display_sidebar()) : ?>
           <aside class="sidebar">
             <?php include Wrapper\sidebar_path(); ?>
-          </aside><!-- /.sidebar -->
+          </aside> -->
         <?php endif; ?>
       </div><!-- /.content -->
     </div><!-- /.wrap -->

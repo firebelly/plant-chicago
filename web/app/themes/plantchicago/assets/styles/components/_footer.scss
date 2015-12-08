@@ -9,19 +9,44 @@
     padding: 24px 0 96px;
   }
 
+  .container {
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
   .footer-logo {
     .icon {
       width: 100px;
       height: 36px;
       fill: $white;
+      transition: fill .2s ease-out;
+    }
+
+    &:hover,
+    &:focus {
+      .icon {
+        fill: $brand-secondary;
+      }
     }
   }
 
   h3 {
     margin-top: 0;
     font-size: 11px;
+    font-weight: bold;
     font-family: $sans;
-    text-transform: capitalize;
+    text-transform: none;
+    line-height: 1.636363636em;
+  }
+  
+  p {
+    margin: 0;
+  }
+
+  p, address, a {
+    font-size: 11px;
+    font-weight: 200;
+    font-family: $sans;
     line-height: 1.636363636em;
   }
 

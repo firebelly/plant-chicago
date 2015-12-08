@@ -1,0 +1,47 @@
+// Newslsetter form
+
+.newsletter-form  {
+  @include clearfix();
+
+  input,
+  button {
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input[type="email"] {
+    float: left;
+    height: 36px;
+    border: none;
+    color: $black;
+    padding: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 36px;
+    background: $white;
+  }
+
+  button[type="submit"] {
+    float: left;
+    height: 36px;
+    color: $white;
+    padding: 0 20px;
+    background: $black;
+    border: 2px solid $white;
+    transition: background .2s eaese-out, color .2s ease-out, padding .2s ease-out;
+    .arrow {
+      @include arrow($white);
+    }
+
+    &:hover,
+    &:focus {
+      color: $black;
+      background: $brand-secondary;
+      border-color: $brand-secondary;
+      .arrow {
+        @include arrow($black);
+      }
+    }
+  }
+}

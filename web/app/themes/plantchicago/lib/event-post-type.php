@@ -126,12 +126,30 @@ add_action('manage_posts_custom_column',  __NAMESPACE__ . '\custom_columns');
 function metaboxes( array $meta_boxes ) {
   $prefix = '_cmb2_'; // Start with underscore to hide from custom fields list
 
+  $meta_boxes['event_summary'] = array(
+    'id'            => 'event_summary',
+    'title'         => __( 'Event Summary', 'cmb2' ),
+    'object_types'  => array( 'event', ), // Post type
+    'context'       => 'normal',
+    'priority'      => 'high',
+    'required'      => 'required',
+    'show_names'    => false, // Show field names on the left
+    'fields'        => array(
+      array(
+          'name'    => 'Summary',
+          'id'      => $prefix . 'event_summary',
+          'type'    => 'textarea',
+      )
+    ),
+  );
+
   $meta_boxes['event_when'] = array(
     'id'            => 'event_when',
     'title'         => __( 'Event When', 'cmb2' ),
     'object_types'  => array( 'event', ), // Post type
     'context'       => 'normal',
     'priority'      => 'high',
+    'required'      => 'required',
     'show_names'    => true, // Show field names on the left
     'fields'        => array(
       array(
@@ -204,35 +222,17 @@ function get_events($options=[]) {
       'compare' => (!empty($options['past_events']) ? '<=' : '>')
     ]
   ];
-  if (!empty($options['countposts'])) {
 
-    // Just count posts (used for load-more buttons)
-    $args ['posts_per_page'] = -1;
-    $args ['fields'] = 'ids';
-    $count_query = new \WP_Query($args);
-    return $count_query->found_posts;
-
-  } else {
-
-    // Display all matching events using article-event.php
-    $event_posts = get_posts($args);
-    if (!$event_posts) return false;
-    $output = '';
-    $show_view_all_button = (!empty($options['show_view_all_button']));
-    foreach ($event_posts as $event_post):
-      if (!empty($options['map-points'])):
-        $event = get_event_details($event_post);
-        $url = get_permalink($event_post);
-        $output .= '<span class="map-point" data-url="' . $url . '" data-lat="' . $event->lat . '" data-lng="' . $event->lng . '" data-title="' . $event->title . '" data-desc="' . $event->desc . '" data-id="' . $event->ID . '"></span>';
-      else:
-        ob_start();
-        $show_images = !empty($options['show_images']);
-        include(locate_template('templates/article-event.php'));
-        $output .= ob_get_clean();
-      endif;
-    endforeach;
-    return $output;
-  }
+  // Display all matching events using article-event.php
+  $event_posts = get_posts($args);
+  if (!$event_posts) return false;
+  $output = '';
+  foreach ($event_posts as $event_post):
+    ob_start();
+    include(locate_template('templates/article-event.php'));
+    $output .= ob_get_clean();
+  endforeach;
+  return $output;
 }
 
 /**
@@ -281,6 +281,7 @@ function get_event_details($post) {
     'ID' => $post->ID,
     'title' => $post->post_title,
     'body' => apply_filters('the_content', $post->post_content),
+    'event_summary' => get_post_meta($post->ID, '_cmb2_event_summary', true),
     'event_start' => get_post_meta($post->ID, '_cmb2_event_start', true),
     'event_end' => get_post_meta( $post->ID, '_cmb2_event_end', true),
     'venue' => get_post_meta($post->ID, '_cmb2_venue', true),
@@ -289,7 +290,7 @@ function get_event_details($post) {
   ];
   // Is this event multiple days?
   $event['multiple_days'] = (date('Y-m-d', $event['event_start']) != date('Y-m-d', $event['event_end']));
-  $event['start_time'] = date('g:iA', $event['event_start']);
+  $event['start_time'] = date('D g:iA', $event['event_start']);
   $event['end_time'] = date('g:iA', $event['event_end']);
   if ($event['start_time'] != $event['end_time']) {
     $event['time_txt'] = $event['start_time'] . '–' . $event['end_time'];

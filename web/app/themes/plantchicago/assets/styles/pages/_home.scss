@@ -19,10 +19,68 @@
   }
 
   .site-main {
+    @include min-screen($breakpoint-medium) {
+      margin-top: 0;
+      > .grid {
+        padding: 0;
+      }
+    }
+
+    .content-left,
+    .content-right {
+      padding: 30px;
+      @include min-screen($breakpoint-medium) {
+        padding: 60px 0;
+      }
+    }
     .content-left {
+      
+      @include min-screen($breakpoint-medium) {
+        padding-right: 60px;
+      }
+
       h2, h3 {
         color: $brand-primary;
       }
+    }
+    .content-right {
+
+      @include min-screen($breakpoint-medium) {
+        padding-left: 60px;
+        padding-right: 30px;
+      }
+    }
+  }
+
+  .events-list {
+    background: $brand-primary;
+
+    .event {
+      &:hover,
+      &:focus {
+        .article-title {
+          a {
+            color: $brand-secondary;
+          }
+        }
+      }
+      .article-date {
+        color: $white;
+        border-color: $white;
+      }
+      .article-title {
+        a {
+          color: $black;
+        }
+      }
+      .event-summary {
+        color: $white;
+      }
+    }
+
+    .btn {
+      margin-top: 30px;
+      @include button($black, $brand-secondary);
     }
   }
 }

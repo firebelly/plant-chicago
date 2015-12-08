@@ -1,4 +1,4 @@
-<form action="">
+<form class="newsletter-form" action="">
   <input type="email" placeholder="Your email address">
-  <input type="submit" value="Go">
+  <button type="submit">Go <span class="arrow"></span></button>
 </form>
