@@ -35,7 +35,7 @@ function site_options() {
           <?php wp_nonce_field('update-options') ?>
           <table class="form-table">
               <tr>
-                <th scope="row"><label for="twitter_id">Twitter Account:</label></th>
+                <th scope="row"><label for="twitter_id">Twitter Account (no "@"):</label></th>
                 <td><input type="text" id="twitter_id" name="twitter_id" size="45" value="<?php echo get_option('twitter_id'); ?>" /></td>
               </tr>
               <tr>
@@ -43,8 +43,8 @@ function site_options() {
                 <td><input type="text" id="facebook_id" name="facebook_id" size="45" value="<?php echo get_option('facebook_id'); ?>" /></td>
               </tr>
               <tr>
-                <th scope="row"><label for="linkedin_id">LinkedIn Account:</label></th>
-                <td><input type="text" id="linkedin_id" name="linkedin_id" size="45" value="<?php echo get_option('linkedin_id'); ?>" /></td>
+                <th scope="row"><label for="instagram_id">Instagram Account (no "@"):</label></th>
+                <td><input type="text" id="instagram_id" name="instagram_id" size="45" value="<?php echo get_option('instagram_id'); ?>" /></td>
               </tr>
               <tr>
                 <th scope="row"><label for="contact_email">Contact Email</label></th>
@@ -54,7 +54,7 @@ function site_options() {
           <p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes" /></p>
 
           <input type="hidden" name="action" value="update" />
-          <input type="hidden" name="page_options" value="twitter_id,facebook_id,linkedin_id,contact_email" />
+          <input type="hidden" name="page_options" value="twitter_id,facebook_id,instagram_id,contact_email" />
         </form>
     </div>
 <?php
