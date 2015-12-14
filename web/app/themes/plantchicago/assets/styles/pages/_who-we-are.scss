@@ -4,6 +4,7 @@
 
   .people-section {
     position: relative;
+    padding-bottom: 30px;
     background: $brand-primary;
 
     .main-column-left {
@@ -20,6 +21,18 @@
     .active-person-container {
       .active-person-header {
         color: $brand-primary;
+      }
+    }
+  }
+
+  .user-content {
+    ul {
+      padding: 0;
+      margin-left: 0;
+      li {
+        font-size: 11px;
+        list-style: none;
+        line-height: 1.636363636em;
       }
     }
   }

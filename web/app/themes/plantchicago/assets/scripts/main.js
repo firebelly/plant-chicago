@@ -183,12 +183,13 @@ var PlantChicago = (function($) {
             $personData = $thisPerson.find('.person-data')
             thisPersonOffset = -(($('.people-section').offset().top) - ($thisPerson.offset().top));
 
+        $activeDataContainer.empty();
         $thisPerson.addClass('-active');
+        $personData.clone().appendTo($activeDataContainer);
         $activeContainer.css('top', thisPersonOffset);
         $activeContainer.addClass('-active');
         _scrollBody($activeContainer, 500, 0);
 
-        $personData.clone().appendTo($activeDataContainer);
 
       } else {
 

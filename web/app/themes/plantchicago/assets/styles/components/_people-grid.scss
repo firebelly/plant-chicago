@@ -16,7 +16,7 @@
       &:hover,
       &:focus {
         // Thumb
-        + .thumb-wrap:before {
+        + .person-data .thumb-wrap .thumb-hover {
           opacity: 1;
         }
       }
@@ -39,6 +39,7 @@
   }
   .thumb-wrap {
     .thumb {
+      overflow: hidden;
       img {
         display: none;
       }
@@ -97,13 +98,23 @@
     transition: opacity .2s ease-out;
     background: rgba($brand-secondary, .5);
   }
-  .thumb {
+  .thumb,
+  .thumb-hover {
     height: 0;
     width: 100%;
     overflow: hidden;
     border-radius: 50%;
     padding-bottom: 100%;
     background-size: cover;
+  }
+  .thumb-hover {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    position: absolute;
+    transition: opacity .2s ease-out;
   }
 }
 
