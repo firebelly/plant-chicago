@@ -6,7 +6,7 @@
 namespace Firebelly\Media;
 
 // image size for popout thumbs
-add_image_size( 'popout-thumb', 250, 300, ['center', 'top'] );
+add_image_size( 'popout-thumb', 200, 200, ['center', 'top'] );
 
 /**
  * Get thumbnail image for post
@@ -22,15 +22,17 @@ function get_post_thumbnail($post_id, $size='medium') {
   return $return;
 }
 
-// image size for popout thumbs
-add_image_size( 'popout-thumb', 250, 300, ['center', 'top'] );
-
 /**
  * Get header bg for post, duotone treated with the random IHC_BACKGROUND + Dark Blue  
  * @param  string|object   $post_or_image (WP post object or background image)
  * @return HTML            background image code
  */
-function get_header_bg($post_or_image, $thumb_id='') {
+function get_header_bg($post_or_image, $thumb_id='', $options=[]) {
+  if (empty($options['color'])) {
+    $color = PAGE_COLOR;
+  } else {
+    $color = $options['color'];
+  }
   $header_bg = $background_image = false;
   // If WP post object, get the featured image
   if (is_object($post_or_image)) {
@@ -47,7 +49,7 @@ function get_header_bg($post_or_image, $thumb_id='') {
     $base_dir = $upload_dir['basedir'] . '/backgrounds/';
 
     // Build treated filename with thumb_id in case there are filename conflicts
-    $treated_filename = preg_replace("/.+\/(.+)\.(\w{2,5})$/", $thumb_id."-$1-".PAGE_COLOR.".$2", $background_image);
+    $treated_filename = preg_replace("/.+\/(.+)\.(\w{2,5})$/", $thumb_id."-$1-".$color.".$2", $background_image);
     $treated_image = $base_dir . $treated_filename;
   
     // If treated file doesn't exist, create it
@@ -58,7 +60,7 @@ function get_header_bg($post_or_image, $thumb_id='') {
         mkdir($base_dir);
       }
       $convert_command = (WP_ENV==='development') ? '/usr/local/bin/convert' : '/usr/bin/convert';
-      exec($convert_command.' '.$background_image.' +profile "*" -resize 1400x -quality 65 -colorspace gray -level +10% +level-colors "#414141","#'.PAGE_COLOR.'" '.$treated_image);
+      exec($convert_command.' '.$background_image.' +profile "*" -resize 1400x -quality 65 -colorspace gray -level +10% +level-colors "#414141","#'.$color.'" '.$treated_image);
     }    
     $header_bg = ' style="background-image:url(' . $upload_dir['baseurl'] . '/backgrounds/' . $treated_filename . ');"';
   }

@@ -29,15 +29,17 @@ var PlantChicago = (function($) {
  
     _initNav();
     _initBigClicky();
-    // _initSearch();
+    _initSearch();
     // _initLoadMore();
     _injectSvgSprite();
+    _initPeopleModals();
 
     // Esc handlers
     $(document).keyup(function(e) {
       if (e.keyCode === 27) {
         _hideSearch();
         _hideMobileNav();
+        _closePerson();
       }
     });
 
@@ -93,34 +95,32 @@ var PlantChicago = (function($) {
   }
 
   function _initSearch() {
-    $('.search-form:not(.mobile-search) .search-submit').on('click', function (e) {
-      if ($('.search-form').hasClass('active')) {
-
+    $('.search-toggle').on('click', function() {
+      if ($('.search-form').hasClass('-active')) {
+        $('.search-form').removeClass('-active');
       } else {
-        e.preventDefault();
-        $('.search-form').addClass('active');
+        $('.search-form').addClass('-active');
         $('.search-field:first').focus();
       }
     });
+
     $('.search-form .close-button').on('click', function() {
       _hideSearch();
-      _hideMobileNav();
     });
   }
 
   function _hideSearch() {
-    $('.search-form').removeClass('active');
+    $('.search-form').removeClass('-active');
+    $('.search-field').blur();
   }
 
   // Handles main nav
   function _initNav() {
     // SEO-useless nav toggler
     $('.nav-toggle').on('click', function(e) {
-      $('.site-header, .nav-toggle').toggleClass('nav-open');
+      $('body, .site-header, .nav-toggle').toggleClass('nav-open');
       $('.site-nav').toggleClass('-active');
     });
-    var mobileSearch = $('.search-form').clone().addClass('mobile-search');
-    mobileSearch.prependTo('.site-nav');
   }
 
   function _showMobileNav() {
@@ -170,6 +170,60 @@ var PlantChicago = (function($) {
           }
       });
     });
+  }
+
+  function _initPeopleModals() {
+    $('.person-toggle').on('click', function(e) {
+      var $activeContainer = $('.active-person-container'),
+          $activeDataContainer = $activeContainer.find('.person-data-container');
+
+      if ($(this).is('.person-activate')) {
+        _showOverlay();
+        var $thisPerson = $(this).closest('.person'),
+            $personData = $thisPerson.find('.person-data')
+            thisPersonOffset = -(($('.people-section').offset().top) - ($thisPerson.offset().top));
+
+        $thisPerson.addClass('-active');
+        $activeContainer.css('top', thisPersonOffset);
+        $activeContainer.addClass('-active');
+        _scrollBody($activeContainer, 500, 0);
+
+        $personData.clone().appendTo($activeDataContainer);
+
+      } else {
+
+        _closePerson();
+        _hideOverlay();
+
+      }
+ 
+    });
+
+    // Close if user clicks outside modal
+    $('html, body').on('click', '.global-overlay', function() {
+      if($('.active-person-container').is('.-active')) {
+        _closePerson();
+      }
+    });
+
+  }
+
+  function _showOverlay() {
+    $('.global-overlay').addClass('-active');
+  }
+
+  function _hideOverlay() {
+    $('.global-overlay').removeClass('-active');
+  }
+
+  function _closePerson() {
+    var $activeContainer = $('.active-person-container'),
+        $activeDataContainer = $('.person-data-container');
+
+    _hideOverlay();
+    $activeContainer.removeClass('-active');
+    $('.person.-active').removeClass('-active');
+    $activeDataContainer.empty();
   }
 
   // Track ajax pages in Analytics

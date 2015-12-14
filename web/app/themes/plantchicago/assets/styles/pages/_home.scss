@@ -2,8 +2,8 @@
 
 .home.page {
   .site-header {
-
     @include min-screen($breakpoint-medium) {
+      position: relative;
       &:after {
         left: 0;
         right: 0;
@@ -19,10 +19,14 @@
   }
 
   .site-main {
-    @include min-screen($breakpoint-medium) {
-      margin-top: 0;
-      > .grid {
-        padding: 0;
+
+    .main-column-right {
+      background: none;
+      @include min-screen($breakpoint-medium) {
+        margin-top: 0;
+        > .grid {
+          padding: 0;
+        }
       }
     }
 
@@ -36,6 +40,8 @@
     .content-left {
       
       @include min-screen($breakpoint-medium) {
+        max-width: 55%;
+        flex-basis: 55%;
         padding-right: 60px;
       }
 
@@ -46,6 +52,8 @@
     .content-right {
 
       @include min-screen($breakpoint-medium) {
+        max-width: 45%;
+        flex-basis: 45%;
         padding-left: 60px;
         padding-right: 30px;
       }
@@ -81,6 +89,48 @@
     .btn {
       margin-top: 30px;
       @include button($black, $brand-secondary);
+    }
+  }
+
+  .recent-news {
+    background: $green-lite;
+
+    .main-column-right {
+      padding: 30px;
+
+      @include min-screen($breakpoint-medium) {
+        padding: 48px 0 60px;
+      }
+    }
+
+    h2 {
+      color: $brand-primary;
+
+      @include min-screen($breakpoint-medium) {
+        margin-right: 30px;
+      }
+    }
+
+    .article-list {
+      
+      @include min-screen($breakpoint-medium) {
+        flex-wrap: wrap;
+
+        article {
+          flex-basis: 50%;
+          padding-right: 30px;
+        }
+      }
+
+      @include min-screen($breakpoint-large) {
+        flex-wrap: none;
+
+        article {
+          flex-grow: 1;
+          flex-basis: 0;
+          padding-right: 30px;
+        }
+      }
     }
   }
 }

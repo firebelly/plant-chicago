@@ -14,7 +14,7 @@ $event_url = get_permalink($event_post);
     <div class="article-content-wrap"> 
       <h1 class="article-title"><a href="<?= $event_url ?>"><?= $event->title ?></a></h1>
       <p class="event-summary"><?= $event->event_summary ?></p>
-      <?php if (!empty($show_view_all_button)): ?><p class="view-all"><a class="button" href="/events/">View All Events</a></p><?php endif; ?>
+      <?php if (!empty($show_view_all_button)): ?><p class="view-all"><a class="button" href="/news-events/">View All Events</a></p><?php endif; ?>
     </div>
   </div>
 </article>

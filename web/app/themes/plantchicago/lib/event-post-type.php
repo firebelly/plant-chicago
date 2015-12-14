@@ -29,7 +29,7 @@ function post_type() {
     'not_found_in_trash'  => 'Not found in Trash',
   );
   $rewrite = array(
-    'slug'                => 'events',
+    'slug'                => 'news-events',
     'with_front'          => false,
     'pages'               => true,
     'feeds'               => true,
@@ -51,7 +51,7 @@ function post_type() {
     'has_archive'         => true,
     'exclude_from_search' => false,
     'publicly_queryable'  => true,
-    'rewrite'             => $rewrite,
+    'rewrite'             => false,
     'capability_type'     => 'event',
     'map_meta_cap'        => true
   );
@@ -65,7 +65,6 @@ add_action( 'init', __NAMESPACE__ . '\post_type', 0 );
  */
 function add_capabilities() {
   $role_admin = get_role('administrator');
-  // programs
   $role_admin->add_cap('edit_event');
   $role_admin->add_cap('read_event');
   $role_admin->add_cap('delete_event');
@@ -159,7 +158,7 @@ function metaboxes( array $meta_boxes ) {
       ),
       array(
           'name'    => 'End Date',
-          // 'desc'    => '(Optional)',
+          'desc'    => 'This must be filled — if a single day event, choose the same date as the start date.',
           'id'      => $prefix . 'event_end',
           'type'    => 'text_datetime_timestamp',
       ),
@@ -194,6 +193,27 @@ function metaboxes( array $meta_boxes ) {
       //     'id'      => $prefix . 'lng',
       //     'type'    => 'text_small',
       // ),
+    ),
+  );
+
+  $meta_boxes['event_registration'] = array(
+    'id'            => 'event_registration',
+    'title'         => __( 'Event Registration', 'cmb2' ),
+    'object_types'  => array( 'event', ), // Post type
+    'context'       => 'normal',
+    'priority'      => 'high',
+    'show_names'    => true, // Show field names on the left
+    'fields'        => array(
+      array(
+          'name'    => 'Price',
+          'id'      => $prefix . 'price',
+          'type'    => 'text',
+      ),
+      array(
+          'name'    => 'Registration Link',
+          'id'      => $prefix . 'registration_url',
+          'type'    => 'text',
+      )
     ),
   );
 

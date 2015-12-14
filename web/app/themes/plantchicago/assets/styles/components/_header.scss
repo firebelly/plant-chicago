@@ -6,7 +6,7 @@
   min-height: 160px;
   background-size: cover;
   background-position: center center;
-  @include min-screen($breakpoint-medium) {
+  @include min-screen($breakpoint-nav) {
     position: relative;
   }
 
@@ -22,13 +22,17 @@
     background-image: linear-gradient($black,rgba(black,0));
   }
 
-  .container {
+  .site-grid {
     z-index: 1;
     padding: 30px;
-    position: static;
+    position: relative;
+
+    @include min-screen($breakpoint-small) {
+      position: static;
+    }
 
     @include min-screen($breakpoint-medium) {
-      position: relative;
+      padding: 36px 0;
     }
   }
 
@@ -37,6 +41,10 @@
   }
   .main-column-right {
     position: static;
+    @include min-screen($breakpoint-nav) {
+      overflow: hidden;
+      padding-right: 30px;
+    }
   }
 
   // Style changes when nav is open
@@ -79,9 +87,15 @@
 
     @include min-screen($breakpoint-medium) {
       a {
-        width: 195px;
+        width: 0;
+        padding: 0;
+        margin: 0 auto;
         transform-origin: bottom;
-        transform: rotate(90deg) translateX(28px) translateY(34px);
+        transform: rotate(90deg) translateX(0) translateY(-35px);
+      }
+      .icon {
+        width: 195px;
+        height: 70px;
       }
     }
   }
@@ -98,8 +112,9 @@
       left: 0;
       width: 100%;
       bottom: 66px;
-      max-width: 70%;
+      max-width: 700px;
       position: absolute;
+      padding-right: 30px;
 
 
       h2 {
@@ -113,10 +128,6 @@
 
   @include min-screen($breakpoint-medium) {
     min-height: 732px;
-
-    .container {
-      padding: 36px 30px;
-    }
 
     .main-column-left,
     .main-column-right {

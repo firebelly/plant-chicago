@@ -28,11 +28,19 @@
 @import "components/newsletter";
 @import "components/main-section";
 @import "components/events-list";
+@import "components/article-list";
+@import "components/people-grid";
 @import "components/footer";
 
 // Pages
+@import "pages/color-schemes";
 @import "pages/page";
 @import "pages/home";
+@import "pages/blog";
+@import "pages/who-we-are";
+@import "pages/tour";
+@import "pages/learning";
+@import "pages/farmers-market";
 @import "pages/single-post";
 @import "pages/search-results";
 

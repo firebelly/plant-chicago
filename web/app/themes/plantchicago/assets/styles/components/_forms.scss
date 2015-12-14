@@ -1,5 +1,15 @@
 // Forms
 
+input {
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+input[type=search] {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+
 // Custom select styles
 
 .select-wrapper {

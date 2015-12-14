@@ -1,0 +1,31 @@
+// Color Schemes
+
+@mixin colorScheme($color, $secondary) {
+  .content {
+    .page-header {
+      h1 {
+        color: $color;
+      }
+    }
+
+    h2 {
+      color: $color;
+    }
+  }
+
+  // Gutter Icons
+  .site-main {
+    .main-column-left {
+      .icon {
+        fill: $color;
+      }
+    }
+  }
+
+  // Page user content
+  .user-content {
+    .button a {
+      @include button($color, $brand-secondary);
+    }
+  }
+}

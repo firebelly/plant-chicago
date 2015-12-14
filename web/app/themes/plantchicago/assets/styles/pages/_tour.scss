@@ -1,0 +1,5 @@
+// Tour Page
+
+.page.tour {
+  @include colorScheme($red, $brand-secondary);
+}

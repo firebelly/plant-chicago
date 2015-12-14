@@ -1,0 +1,29 @@
+<?php 
+$photo = get_the_post_thumbnail($post->ID);
+$thumb = \Firebelly\Media\get_header_bg($post, ['color' => '00be73']);
+$thumb2 = \Firebelly\Media\get_header_bg($post, ['color' => 'ffc932']);
+$subtitle = get_post_meta( $post->ID, '_cmb2_subtitle', true );
+$body = apply_filters('the_content', $post->post_content);
+?>
+<article data-url="<?= get_permalink($post) ?>" id="<?= $post->post_name ?>">
+  <button class="person-activate person-toggle x-button -plus"><div class="x"></div></button>
+  <div class="person-data">
+    <div class="thumb-wrap">
+      <div class="thumb" <?= $thumb ?>><?= $photo ?></div>
+      <div class="thumb-hover" <?= $thumb2 ?>></div>
+    </div>
+    <div class="person-info">
+      <div class="person-title">
+        <h3>
+          <?= $post->post_title ?>
+          <span class="sub-title"><?= $subtitle ?></span>
+        </h3>
+      </div>
+      <div class="bio">
+        <div class="info-content user-content">
+          <?= $body ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

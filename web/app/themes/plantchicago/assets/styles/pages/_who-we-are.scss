@@ -1,0 +1,27 @@
+// Who We Are page
+
+.page.who-we-are {
+
+  .people-section {
+    position: relative;
+    background: $brand-primary;
+
+    .main-column-left {
+      .icon {
+        fill: $black;
+      }
+    }
+
+    h2 {
+      color: $black;
+    }
+
+    // People Grid mods for ../components/_people-grid.scss
+    .active-person-container {
+      .active-person-header {
+        color: $brand-primary;
+      }
+    }
+  }
+
+}

@@ -14,7 +14,7 @@ $total_events = \Firebelly\PostTypes\Event\get_events([
 ]);
 $total_pages = ($total_events > 0) ? ceil($total_events / $per_page) : 1;
 
-$post = get_page_by_path('/events');
+$post = get_page_by_path('/news-events');
 $with_image_class = (has_post_thumbnail($post->ID)) ? 'with-image' : '';
 $page_content = apply_filters('the_content', $post->post_content);
 ?>

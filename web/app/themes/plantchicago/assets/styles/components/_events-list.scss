@@ -1,6 +1,22 @@
 // Events List
 
 .events-list {
+  
+  .no-events {
+    .icon-set {
+      @include clearfix();
+    }
+    .icon {
+      float: left;
+      width: 72px;
+      height: 72px;
+      fill: $black;
+    }
+    .pattern {
+      width: 100%;
+    }
+  }
+
   .event {
     cursor: pointer;
     &:hover,

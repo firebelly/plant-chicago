@@ -1,0 +1,35 @@
+// Article List
+
+.article-list {
+  .article {
+    .article-title {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.5em;
+      a {
+        color: $brand-primary;
+        text-decoration: none;
+        &:hover,
+        &:focus {
+          color: $brand-secondary;
+        }
+      }
+    }
+    .article-meta {
+      font-size: 11px;
+      line-height: 1.636363636em;
+      a {
+        text-decoration: none;
+        &:hover,
+        &:focus {
+          color: $brand-secondary;
+        }
+      }
+    }
+    .article-excerpt {
+      p {
+        margin-top: .5em;
+      }
+    }
+  }
+}

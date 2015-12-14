@@ -1,0 +1,178 @@
+// People Grid
+
+.people-grid {
+  margin: 0;
+  padding: 0;
+  @include clearfix();
+
+  .person {
+    width: 100%;
+    list-style: none;
+    position: relative;
+
+    .person-activate {
+      top: 0;
+      right: 0;
+      &:hover,
+      &:focus {
+        // Thumb
+        + .thumb-wrap:before {
+          opacity: 1;
+        }
+      }
+    }
+
+    h3 {
+      font-size: 16px;
+      line-height: 1em;
+      letter-spacing: 0;
+      font-family: $sans;
+      text-transform: capitalize;
+      .sub-title {
+        display: block;
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 1.636363636em;
+      }
+    }
+  }
+  .thumb-wrap {
+    .thumb {
+      img {
+        display: none;
+      }
+    }
+  }
+
+  .bio {
+    display: none;
+  }
+
+  @include min-screen($breakpoint-medium) {
+    margin: 0 -15px;
+    width: calc(100% + 30px);
+  
+    .person {
+      float: left;
+      width: 180px;
+      margin: 0 15px 30px;
+    }
+  }
+}
+
+
+// Things that are consistent between active and passive states
+.x-button.person-toggle {
+  z-index: 1;
+  position: absolute;
+  &:hover,
+  &:focus {
+    background: $brand-secondary;
+    border-color: $brand-secondary;
+    &:before,
+    &:after {
+      color: $black;
+    }
+    .x {
+      &:before,
+      &:after {
+        background: $black;
+      }
+    }
+  }
+}
+
+.thumb-wrap {
+  position: relative;
+  &:before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    content: '';
+    border-radius: 50%;
+    position: absolute;
+    transition: opacity .2s ease-out;
+    background: rgba($brand-secondary, .5);
+  }
+  .thumb {
+    height: 0;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    padding-bottom: 100%;
+    background-size: cover;
+  }
+}
+
+// Active Person Container
+.active-person-container {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: none;
+  margin-top: -32px;
+  position: absolute;
+  background: $black;
+  @include clearfix();
+  &.-active {
+    display: flex;
+  }
+
+  .x-button.person-toggle {
+    top: 42px;
+    right: $column;
+    @extend .-plus;
+    transform: rotate(0deg) translateX(50%);
+  }
+
+  .-column-right {
+    padding: 30px;
+  }
+
+  .person-data {
+    @extend .grid;
+  }
+
+  .active-person-header {
+    color: $brand-primary;
+  }
+
+  h3 {
+    color: $brand-primary;
+  }
+  
+  .bio {
+    color: $white;
+    margin-top: 0;
+  }
+
+  @include min-screen($breakpoint-medium) {
+    .thumb-wrap,
+    .person-info {
+      max-width: 50%;
+      flex-basis: 50%;
+      padding-right: 30px;
+    }
+
+    .-column-right {
+      width: $column * 10;
+      padding: 60px $column*2 60px 0;
+    }
+
+    .person-title h3 {
+      font-size: 48px;
+      margin-bottom: 30px;
+      line-height: 1.25em;
+      .sub-title {
+        margin-top: 1em;
+        font-size: 16px;
+        line-height: 1.5em;
+        display: inline-block;
+      }
+    }
+  }
+}

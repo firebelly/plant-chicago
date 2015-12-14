@@ -5,6 +5,10 @@ $padding: 1em;
 $column: 100% * (1 / 12);
 
 // Main column layout
+.site-grid {
+  width: 100%;
+  justify-content: flex-end; 
+}
 .main-column-left {
   position: relative;
   @include min-screen($breakpoint-medium) {
@@ -13,6 +17,7 @@ $column: 100% * (1 / 12);
   }
 }
 .main-column-right {
+  max-width: 1400px;
   position: relative;
   @include min-screen($breakpoint-medium) {
     float: left;
@@ -20,8 +25,13 @@ $column: 100% * (1 / 12);
   }
 }
 
-.grid {
+.row {
   width: 100%;
+  flex-basis: 100%;
+  position: relative;
+}
+
+.grid {
   display: block;
   @include min-screen($breakpoint-medium) {
     display: flex;

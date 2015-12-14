@@ -4,13 +4,27 @@
   color: $white;
   position: relative;
   background: $black;
-  padding: 30px 0 60px;
-  @include min-screen($breakpoint-medium) {
-    padding: 24px 0 96px;
+  padding: 30px 30px 60px;
+
+  .main-gutter {
+    margin-bottom: 20px;
   }
 
-  .container {
-    align-items: flex-end;
+  .main-column-right {
+    .grid {
+      flex-wrap: wrap;
+    }
+
+    .content-left,
+    .content-right {
+      > div {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .content-right {
+    padding-right: 30px;
     justify-content: space-between;
   }
 
@@ -99,6 +113,10 @@
       width: 15px;
       height: 10px;
     }
+
+    @include min-screen($breakpoint-medium) {
+      margin-right: 20px;
+    }
   }
 
   .visit {
@@ -119,5 +137,53 @@
     width: 100%;
     height: 36px;
     position: absolute;
+  }
+
+  @include min-screen($breakpoint-medium) {
+    padding: 24px 0 96px;
+
+    .grid,
+    .flex-item {
+      display: flex;
+    }
+
+    .main-gutter {
+      margin-bottom: 0;
+      text-align: center;
+    }
+
+    .main-column-right {
+      .content-left,
+      .content-right {
+        max-width: 100%;
+        flex-basis: 100%;
+
+        > div {
+          margin-bottom: 36px;
+        }
+      }
+    }
+
+  }
+
+  @include min-screen(1080px) {
+    
+    .grid,
+    .flex-item {
+      align-items: flex-end;
+    }
+
+    .main-column-right {
+      .content-left,
+      .content-right {
+        max-width: 50%;
+        flex-basis: 50%;
+
+        > div {
+          margin-bottom: 0;
+        }
+      }
+    }
+
   }
 }

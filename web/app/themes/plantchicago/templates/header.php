@@ -1,13 +1,23 @@
 <?php 
 
 use Firebelly\Utils;
-$header_text = get_post_meta($post->ID, '_cmb2_header_text', true);
-$header_bg = \Firebelly\Media\get_header_bg($post);
+if (is_front_page()) {
+  $header_text = get_post_meta($post->ID, '_cmb2_header_text', true);
+} else {
+  $header_text = false;
+}
+
+if (\Firebelly\Utils\is_top_level_page($post)) {
+  $background_page = get_page_by_path('news-events');
+} else {
+  $background_page = $post;
+}
+$header_bg = \Firebelly\Media\get_header_bg($background_page, ['color' => PAGE_COLOR]);
 
 ?>
 
 <header class="site-header" role="banner" <?= $header_bg ?>>
-  <div class="container grid">
+  <div class="site-grid grid">
 
     <div class="main-column-left">
       <h1 class="site-title"><a href="<?= esc_url(home_url('/')); ?>"><svg class="icon icon-logo"><use xlink:href="#icon-logo"/></svg><span class="sr-only"><?php bloginfo('name'); ?></span></a></h1>
@@ -20,6 +30,12 @@ $header_bg = \Firebelly\Media\get_header_bg($post);
           wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav']);
         endif;
         ?>
+        <button class="search-toggle"><svg class="icon icon-search"><use xlink:href="#icon-search"></svg></button>
+        <?php get_search_form(); ?>
+
+        <svg class="header-pattern">
+          <rect x="0" y="0" width="100%" height="36" fill="url(#footerPattern)">
+        </svg>
       </nav>
       <button type="button" class="nav-toggle" aria-label="toggle navigation">
         <span class="nav-label">Menu</span>

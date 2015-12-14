@@ -9,11 +9,16 @@ html {
 
 body {
   color: $black;
-  font-size: 16px; //Em base unit
-  font-size: 100%;
+  font-size: 16px;
   overflow-x: hidden;
   font-family: $sans;
   background: $white;
+  &.nav-open {
+    position: fixed;
+    @include min-screen($breakpoint-small) {
+      position: static;
+    }
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -63,16 +68,35 @@ img {
   overflow: hidden;
 }
 
+// Overlay
+.global-overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: none;
+  position: fixed;
+  background: rgba($black,.5);
+  &.-active {
+    display: block;
+  }
+}
+
 // Utility classes
 .hide {
   display: none;
+}
+
+.clearfix {
+  @include clearfix();
 }
 
 .container {
   width: 100%;
   margin: 0 auto;
   padding: 0 30px;
-  max-width: 1230px;
+  // max-width: 1230px;
   position: relative;
   @include clearfix();
   @include min-screen($breakpoint-medium) {
@@ -80,6 +104,14 @@ img {
 }
 
 // Main content area
+.site-container {
+
+  @include min-screen($breakpoint-medium) {
+    z-index: 1;
+    position: relative;
+  }
+}
+
 .content {
   width: 100%;
   padding: 0; 
@@ -109,20 +141,19 @@ img {
   }
 }
 
-.site-main.main-column-right {
-  background: $white;
-  @include min-screen($breakpoint-medium) {
-    margin-top: -294px;
-  }
+.site-main {
+  width: 100%;
+  .main-column-right {
 
-  > .grid {
-    flex-wrap: wrap;
-    @include min-screen($breakpoint-medium) {
-      padding: 60px 0 60px 115px;
+    > .grid {
+      flex-wrap: wrap;
+      @include min-screen($breakpoint-medium) {
+        padding: 60px 0 60px 115px;
+      }
     }
-  }
 
-  .page-header {
-    width: 100%;
+    .page-header {
+      width: 100%;
+    }
   }
 }

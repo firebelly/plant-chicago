@@ -23,17 +23,9 @@ use Roots\Sage\Wrapper;
     ?>
     <div class="site-container" role="document">
       <div class="content grid">
-        <div class="main-gutter main-column-left"></div>
-        <main class="site-main main-column-right" role="main">
-          <div class="grid">
-            <?php include Wrapper\template_path(); ?>
-          </div>
-        </main><!-- /.main -->
-<!--         <?php if (Setup\display_sidebar()) : ?>
-          <aside class="sidebar">
-            <?php include Wrapper\sidebar_path(); ?>
-          </aside> -->
-        <?php endif; ?>
+        <main class="site-main" role="main">
+          <?php include Wrapper\template_path(); ?>
+        </main>
       </div><!-- /.content -->
     </div><!-- /.wrap -->
     <?php

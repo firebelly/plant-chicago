@@ -3,6 +3,16 @@
 namespace Firebelly\Utils;
 
 /**
+ * Tell WordPress to use searchform.php from the templates/ directory
+ */
+function get_search_form() {
+  $form = '';
+  locate_template('/templates/searchform.php', true, false);
+  return $form;
+}
+add_filter('get_search_form', __NAMESPACE__ . '\\get_search_form');
+
+/**
  * Bump up # search results
  */
 function search_queries( $query ) {
@@ -12,6 +22,17 @@ function search_queries( $query ) {
   return $query;
 }
 add_filter( 'pre_get_posts', __NAMESPACE__ . '\\search_queries' );
+
+/**
+ * Check if post is not top-level page
+ */
+function is_top_level_page($post) {
+  if (is_single($post) || is_home($post) || is_search($post) || is_archive($post)) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 /**
  * Custom li'l excerpt function
@@ -118,6 +139,8 @@ function page_color() {
     $color = 'b9e5fa';
   } else if(is_page('farmers-market')) {
     $color = 'ffeca9';
+  } else if (get_post_type() == 'person') {
+    $color = '00be73';
   } else {
     $color = 'a5dcbc';
   }

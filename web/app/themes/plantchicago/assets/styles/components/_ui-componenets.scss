@@ -115,3 +115,97 @@
 .arrow {
   @include arrow($black);
 }
+
+// "X" button — used as a "plus" and  "close" button
+.x-button {
+  width: 36px;
+  height: 36px;
+  background: none;
+  position: relative;
+  border-radius: 100%;
+  border: 2px solid $brand-primary;
+  transition: border-color .2s ease-out, background .2s ease-out;
+  &:before,
+  &:after {
+    left: 50%;
+    height: 0;
+    content: '•';
+    line-height: 0;
+    font-size: 10px;
+    position: absolute;
+    color: $brand-primary;
+    transform: translateX(-50%);
+    transition: top .2s ease-out, bottom .2s ease-out, color .2s ease-out;
+  }
+  &:before {
+    top: 10px;
+  }
+  &:after {
+    bottom: 9px;
+  }
+
+  // Hover states
+  &:hover,
+  &:focus {
+    outline: none;
+    border-color: $brand-secondary;
+    &:before {
+      top: 8px;
+      color: $brand-secondary;
+    }
+    &:after {
+      bottom: 7px;
+      color: $brand-secondary;
+    }
+    .x {
+      &:before,
+      &:after {
+        background: $brand-secondary;
+      }
+    }
+  }
+
+  .x {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    &:before,
+    &:after {
+      left: 50%;
+      width: 12px;
+      content: '';
+      height: 2px;
+      bottom: 50%;
+      position: absolute;
+      background: $brand-primary;
+      transition: background .2s ease-out;
+    }
+    &:before {
+      transform-origin: left bottom;
+      transform: rotate(45deg) translate(-50%, 50%);
+    }
+    &:after {
+      transform-origin: left bottom;
+      transform: rotate(-45deg) translate(-50%, 50%);
+    }
+  }
+
+  // Plus version
+  &.-plus {
+    border-color: $white;
+    transform: rotate(-45deg);
+
+    &:before,
+    &:after {
+      color: $white;
+    }
+    .x {
+      &:before,
+      &:after {
+        background: $white;
+      }
+    }
+  }
+}

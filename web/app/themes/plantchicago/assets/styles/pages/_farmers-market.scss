@@ -1,0 +1,5 @@
+// Farmers Market Page
+
+.page.farmers-market {
+  @include colorScheme($brand-secondary, $brand-primary);
+}
