@@ -25,7 +25,8 @@
     @include clearfix();
     li {
       list-style: none;
-      &.current-menu-item {
+      &.current-menu-item,
+      &.current_page_parent {
         a {
           &:after {
             opacity: 1;

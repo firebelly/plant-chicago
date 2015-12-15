@@ -1,14 +1,88 @@
 // Blog Page
 
-.blog {
+.blog,
+.archive,
+.search {
+
+  .content {
+    padding-bottom: 30px;
+    @include min-screen($breakpoint-medium) {
+      padding-bottom: 60px;
+    }
+  }
+
   .page-header {
-    padding: 30px;
     h1 {
-      margin: 0;
+      margin-top: 0;
+    }
+  }
+
+  .main-column-right {
+    &.-top {
+      > .grid {
+        padding: 0 0 30px;
+        border-bottom: 2px solid $brand-primary;
+      }
+    }
+
+    .content-left,
+    .content-right {
+      h2 {
+        color: $brand-primary;
+      }
     }
 
     @include min-screen($breakpoint-medium) {
-      padding: 72px 30px 0 115px;
+
+      .content-left {
+        padding-right: 30px;
+      }
     }
+  }
+
+  .news-grid {
+    .article {
+      .article-title {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.5em;
+        a {
+          color: $brand-primary;
+          text-decoration: none;
+          transition: color .2s ease-out;
+        }
+      }
+    }
+  }
+}
+
+// Post navigation
+nav.pagination {
+  margin-top: 30px;
+  .nav-links {
+    @include clearfix();
+  }
+
+  a {
+    color: $brand-primary;
+    text-decoration: none;
+  }
+
+  .page-numbers {
+    float: left;
+    padding: 0 6px;
+    display: inline-block;
+    &:not(.prev) {
+      &+ .page-numbers {
+        border-left: 2px solid $black;
+        &.next {
+          border-left: none;
+        }
+      }
+    }
+  }
+
+  @include min-screen($breakpoint-medium) {
+
   }
 }

@@ -55,9 +55,10 @@
     width: calc(100% + 30px);
   
     .person {
-      float: left;
       width: 180px;
+      vertical-align: top;
       margin: 0 15px 30px;
+      display: inline-block;
     }
   }
 }

@@ -29,7 +29,7 @@ function post_type() {
     'not_found_in_trash'  => 'Not found in Trash',
   );
   $rewrite = array(
-    'slug'                => 'news-events',
+    'slug'                => 'events',
     'with_front'          => false,
     'pages'               => true,
     'feeds'               => true,
@@ -51,7 +51,7 @@ function post_type() {
     'has_archive'         => true,
     'exclude_from_search' => false,
     'publicly_queryable'  => true,
-    'rewrite'             => false,
+    'rewrite'             => $rewrite,
     'capability_type'     => 'event',
     'map_meta_cap'        => true
   );
@@ -301,16 +301,18 @@ function get_event_details($post) {
     'ID' => $post->ID,
     'title' => $post->post_title,
     'body' => apply_filters('the_content', $post->post_content),
+    'price' => get_post_meta($post->ID, '_cmb2_price', true),
     'event_summary' => get_post_meta($post->ID, '_cmb2_event_summary', true),
     'event_start' => get_post_meta($post->ID, '_cmb2_event_start', true),
     'event_end' => get_post_meta( $post->ID, '_cmb2_event_end', true),
     'venue' => get_post_meta($post->ID, '_cmb2_venue', true),
     'lat' => get_post_meta($post->ID, '_cmb2_lat', true),
     'lng' => get_post_meta($post->ID, '_cmb2_lng', true),
+    'registration_url' => get_post_meta($post->ID, '_cmb2_registration_url', true),
   ];
   // Is this event multiple days?
   $event['multiple_days'] = (date('Y-m-d', $event['event_start']) != date('Y-m-d', $event['event_end']));
-  $event['start_time'] = date('D g:iA', $event['event_start']);
+  $event['start_time'] = date('g:iA', $event['event_start']);
   $event['end_time'] = date('g:iA', $event['event_end']);
   if ($event['start_time'] != $event['end_time']) {
     $event['time_txt'] = $event['start_time'] . '–' . $event['end_time'];

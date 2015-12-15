@@ -1,4 +1,161 @@
-// Single Posts
+// Single Posts/Events
 
-.single-post {
+body.single {
+  .content {
+    color: $white;
+    background: $black;
+    border-bottom: 2px solid $white;
+  }
+
+  .back-to-list {
+    right: 0;
+    bottom: 2.2em;
+    position: absolute;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+      color: $brand-secondary;
+      text-decoration: underline;
+    }
+  }
+
+  .page-header {
+    position: relative;
+    h2 {
+      padding-right: 90px;
+      color: $brand-primary;
+    }
+    .back-to-list {
+      right: 0;
+      bottom: 2.2em;
+    }
+  }
+
+  article {
+    position: relative;
+    @include clearfix();
+    .back-to-list {
+      right: 0;
+      bottom: 0;
+    }
+
+    .btn {
+      @include button($white, $brand-secondary);
+    }
+
+    main {
+      margin-bottom: 30px;
+    }
+
+    @include min-screen($breakpoint-medium) {
+      main {
+        width: 75%;
+        float: left;
+        margin-bottom: 0;
+      }
+      aside {
+        width: 25%;
+        float: left;
+      }
+    }
+  }
+
+  .article-image {
+    height: 0;
+    width: 100%;
+    padding-bottom: 40%;
+    margin-bottom: 30px;
+    background-size: cover;
+    background-position: center center;
+    @include min-screen($breakpoint-medium) {
+      margin-bottom: 48px;
+    }
+  }
+
+  .article-title {
+    margin-top: 0;
+    font-size: 36px;
+    line-height: 1em;
+    color: $brand-primary;
+  }
+
+  .article-meta {
+    color: $brand-primary;
+  }
+
+  .registration-link {
+    margin-top: 30px;
+  }
+
+  @include min-screen($breakpoint-medium) {
+    .content {
+      padding-bottom: 60px;
+    }
+
+    .site-header {
+      min-height: 294px;
+    }
+
+    .site-main {
+      .main-column-right {
+        padding-right: $column * 2;
+      }
+    }
+
+    .article-title {
+      font-size: 48px;
+    }
+  }
+}
+
+// Share links
+.share {
+  @include clearfix();
+  ul {
+    margin: 0;
+    padding: 0;
+    @include clearfix();
+    @include min-screen($breakpoint-medium) {
+      float: right;
+    }
+  }
+  li {
+    float: left;
+    list-style: none;
+    &+ li {
+      margin-left: 20px;
+    }
+  }
+  a {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    background: none;
+    border-radius: 100%;
+    border: 2px solid $white;
+    transition: border-color .2s ease-out, background .2s ease-out;
+    &:hover,
+    &:focus {
+      background: $brand-secondary;
+      border-color: $brand-secondary;
+      .icon {
+        fill: $black;
+      }
+    }
+  }
+  .icon {
+    margin: auto;
+    fill: $white;
+    display: block;
+    vertical-align: top;
+    transition: fill .2s ease-out;
+  }
+  .icon-facebook {
+    width: 8px;
+    height: 18px;
+  }
+  .icon-twitter {
+    width: 24px;
+    height: 17px;
+  }
 }

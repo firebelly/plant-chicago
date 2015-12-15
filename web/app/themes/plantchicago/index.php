@@ -1,8 +1,8 @@
 <div class="site-grid grid">
   
-  <div class="main-column-left"></div>
+  <div class="main-column-left -top"></div>
 
-  <div class="main-column-right">
+  <div class="main-column-right -top">
     
     <?php get_template_part('templates/page', 'header'); ?>
 
@@ -11,16 +11,29 @@
       <div class="content-left flex-item one-half">
         <h2>News Archive</h2>
 
-        <div class="news-grid grid">      
-          <?php 
-          // Recent Blog & News posts
-          $news_posts = get_posts(['numberposts' => 10]);
-          if ($news_posts):
-            foreach ($news_posts as $news_post) {
+        <div class="news-grid">
+
+          <?php if (!have_posts($post->post_type=='post')) : ?>
+            <div class="alert alert-warning">
+              <?php _e('Sorry, no results were found.', 'sage'); ?>
+            </div>
+            <?php get_search_form(); ?>
+          <?php endif; ?>
+
+          <?php while (have_posts()) : the_post(); ?>
+
+            <?php 
+
+            if ($post->post_type=='post'):
+
+              $news_post = $post;
               include(locate_template('templates/article-news.php'));
-            }
-          endif;
-          ?>
+
+            endif;
+            ?>
+
+          <?php endwhile; ?>
+
         </div>
       </div>
 
@@ -33,14 +46,14 @@
           <?php get_search_form(); ?>
         <?php endif; ?>
 
-        <?php echo \Firebelly\PostTypes\Event\get_events(['num_posts' => 10]); ?>
+        <?php echo \Firebelly\PostTypes\Event\get_events(['num_posts' => 100]); ?>
 
       </div>
       
     </div>
 
+    <?php the_posts_pagination(5); ?>
+
   </div>
 
 </div>
-
-<?php the_posts_navigation(); ?>

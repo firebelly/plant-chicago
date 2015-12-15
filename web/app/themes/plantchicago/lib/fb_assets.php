@@ -22,13 +22,10 @@ function crufty_ie_scripts() {
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\crufty_ie_scripts', 100);
 
 function scripts() {
-  wp_enqueue_script('fonts', \Roots\Sage\Assets\asset_path('scripts/fonts.js'), [], null, true);
+  // wp_enqueue_script('fonts', \Roots\Sage\Assets\asset_path('scripts/fonts.js'), [], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__.'\\scripts', 100);
 
 function scripts_inline() {
-  echo '<script type="text/javascript">
-      var woffEnabled = true;
-    </script>';
 }
 add_action( 'wp_head', __NAMESPACE__.'\\scripts_inline' ); 

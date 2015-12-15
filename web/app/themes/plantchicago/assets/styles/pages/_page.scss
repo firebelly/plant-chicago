@@ -39,8 +39,12 @@
 
 }
 
-.page:not(.home) {
+.page:not(.home),
+.blog {
   @include colorScheme($brand-primary, $brand-secondary);
+}
+
+body:not(.home) {
 
   .site-main {
 

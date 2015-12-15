@@ -1,5 +1,12 @@
 // Typography
 
+@import url("//hello.myfonts.net/count/2ff066");
+
+@font-face {font-family: 'HalisR-Black';src: url('../fonts/2FF066_0_0.eot');src: url('../fonts/2FF066_0_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2FF066_0_0.woff2') format('woff2'),url('../fonts/2FF066_0_0.woff') format('woff'),url('../fonts/2FF066_0_0.ttf') format('truetype'),url('../fonts/2FF066_0_0.svg#wf') format('svg');}
+ 
+  
+@font-face {font-family: 'HalisR-SBold';src: url('../fonts/2FF066_1_0.eot');src: url('../fonts/2FF066_1_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2FF066_1_0.woff2') format('woff2'),url('../fonts/2FF066_1_0.woff') format('woff'),url('../fonts/2FF066_1_0.ttf') format('truetype'),url('../fonts/2FF066_1_0.svg#wf') format('svg');}
+
 // Fonts
 $sans: 'Karla', Helvetica, sans-serif;
 $serif: Georgia, serif;
