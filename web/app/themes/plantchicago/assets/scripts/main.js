@@ -180,7 +180,7 @@ var PlantChicago = (function($) {
       if ($(this).is('.person-activate')) {
         _showOverlay();
         var $thisPerson = $(this).closest('.person'),
-            $personData = $thisPerson.find('.person-data')
+            $personData = $thisPerson.find('.person-data'),
             thisPersonOffset = -(($('.people-section').offset().top) - ($thisPerson.offset().top));
 
         $activeDataContainer.empty();
