@@ -37,7 +37,7 @@ end
 namespace :deploy do
   before :starting, :map_composer_command do
       on roles(:app) do |server|
-          SSHKit.config.command_map[:composer] = "php54 /home/#{fetch(:login)}/bin/composer.phar"
+          SSHKit.config.command_map[:composer] = "php55 /home/#{fetch(:login)}/bin/composer.phar"
       end
   end
 end
