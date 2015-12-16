@@ -2,4 +2,11 @@
 
 .page.learning {
   @include colorScheme($blue, $brand-secondary);
+
+  .bottom-content {
+    background: $blue-lite;
+    h3 {
+      color: $blue;
+    }
+  }
 }

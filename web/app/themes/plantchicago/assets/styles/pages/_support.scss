@@ -1,0 +1,20 @@
+// Support Page
+
+.page.support {
+  @include colorScheme($green, $brand-secondary);
+
+  .emphasized-section {
+    background: $green;
+    h1, h2, h3, h4, h5, h6 {
+      color: $black;
+    }
+    .main-column-left {
+      .icon {
+        fill: $black;
+      }
+    }
+    .user-content {
+      color: $white;
+    }
+  }
+}

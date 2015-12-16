@@ -3,8 +3,12 @@
 .user-content {
   @include clearfix();
 
-  h1,h2,h3,h4,h5,h6 {
-
+  h3, h4, h5, h6 {
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 1.5em;
+    font-family: $sans;
+    text-transform: capitalize;
   }
 
   p {
@@ -42,6 +46,38 @@
     color: inherit;
     &:hover, &:focus {
       color: $brand-secondary;
+    }
+    &.btn {
+      margin-bottom: 30px;
+    }
+  }
+
+  table {
+    &.pricing-table {
+      width: 100%;
+      position: relative;
+      tr {
+        position: relative;
+        &:before {
+          left: 0;
+          width: 100%;
+          overflow: hidden;
+          position: absolute;
+          letter-spacing: .5em;
+          content: '................................................................';
+        }
+      }
+      td {
+        margin: 0;
+        padding: 0;
+      }
+      td span {
+        position: relative;
+        // gonna have to do this on an individual basis to set the background color
+      }
+      td + td {
+        text-align: right;
+      }
     }
   }
 

@@ -96,6 +96,12 @@ body:not(.home) {
     }
 
     .secondary-content {
+      &.intro-section {
+        .main-column-right {
+          padding-top: 0;
+        }
+      }
+
       .main-column-right {
         padding-bottom: 30px;
 

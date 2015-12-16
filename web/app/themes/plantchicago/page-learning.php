@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Who We Are
+ * Template Name: Learning
  */
 
   use Firebelly\Utils;
@@ -18,10 +18,10 @@
 <div class="site-grid grid">
   <div class="main-gutter main-column-left -top">
     <div class="header-gutter-icons">
-      <svg class="icon icon-land"><use xlink:href="#icon-land"></svg>
-      <svg class="icon icon-factory"><use xlink:href="#icon-factory"></svg>
-      <svg class="icon icon-land"><use xlink:href="#icon-land"></svg>
-      <svg class="icon icon-factory"><use xlink:href="#icon-factory"></svg>
+      <svg class="icon icon-water"><use xlink:href="#icon-water"></svg>
+      <svg class="icon icon-plants"><use xlink:href="#icon-plants"></svg>
+      <svg class="icon icon-water"><use xlink:href="#icon-water"></svg>
+      <svg class="icon icon-plants"><use xlink:href="#icon-plants"></svg>
     </div>
   </div>
 
@@ -66,44 +66,10 @@
   </div>
 <?php } ?>
 
-<div class="people-section site-grid grid">
-
-  <div class="global-overlay"></div>
-  <div class="active-person-container site-grid grid">
-    <div class="main-gutter main-column-left"></div>
-    <div class="-column-right">
-      <button class="person-deactivate person-toggle x-button"><div class="x"></div></button>
-      <div class="row">
-        <h2 class="active-person-header">Staff: Details</h2>
-        <div class="person-data-container">
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="main-gutter main-column-left"><svg class="icon icon-factory"><use xlink:href="#icon-factory"></svg></div>
-
-  <div class="main-column-right">
-
-    <div class="row staff">
-      <h2>Staff</h2>    
-      <?= \Firebelly\PostTypes\Person\get_people(['member_type' => 'staff']); ?>
-    </div>
-
-    <div class="row board">
-      <h2>Board of Directors</h2>    
-      <?= \Firebelly\PostTypes\Person\get_people(['member_type' => 'board']); ?>
-    </div>
-
-  </div>
-
-</div>
-
 <?php if (!empty($bottom_content_left) || !empty($bottom_content_right)) { ?>
   <div class="bottom-content secondary-content site-grid grid">
 
-    <div class="main-gutter main-column-left"><svg class="icon icon-factory"><use xlink:href="#icon-factory"></svg></div>
+    <div class="main-gutter main-column-left"><svg class="icon icon-plants"><use xlink:href="#icon-plants"></svg></div>
 
     <div class="main-column-right grid">
       

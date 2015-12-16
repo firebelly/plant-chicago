@@ -1,6 +1,6 @@
 <?php
 /**
- * Generic page template
+ * Template Name: Farmers Market
  */
 
   use Firebelly\Utils;
@@ -11,7 +11,14 @@
 ?>
 
 <div class="site-grid grid">
-  <div class="main-gutter main-column-left -top"></div>
+  <div class="main-gutter main-column-left -top">
+    <div class="header-gutter-icons">
+      <svg class="icon icon-community"><use xlink:href="#icon-community"></svg>
+      <svg class="icon icon-market"><use xlink:href="#icon-market"></svg>
+      <svg class="icon icon-community"><use xlink:href="#icon-community"></svg>
+      <svg class="icon icon-market"><use xlink:href="#icon-market"></svg>
+    </div>
+  </div>
 
   <div class="main-column-right -top grid">
 
