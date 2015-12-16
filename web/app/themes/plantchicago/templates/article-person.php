@@ -14,7 +14,7 @@ $body = apply_filters('the_content', $post->post_content);
     </div>
     <div class="person-info">
       <div class="person-title">
-        <h3>
+        <h3 class="person-activate person-toggle">
           <?= $post->post_title ?>
           <?= !empty($subtitle) ? '<span class="sub-title">'.$subtitle.'</span>' : ''; ?>
         </h3>
