@@ -3,6 +3,20 @@
 .page.support {
   @include colorScheme($green, $brand-secondary);
 
+  .intro-section {
+    .content-right {
+      display: none;
+      @include min-screen($breakpoint-medium) {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+      }
+    }
+    .stat {
+      background-image: url('../images/supportstat1.png'); 
+    }
+  }
+
   .emphasized-section {
     background: $green;
     h1, h2, h3, h4, h5, h6 {
