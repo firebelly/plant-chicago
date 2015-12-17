@@ -191,15 +191,27 @@ function metaboxes( array $meta_boxes ) {
       
       // General page fields
       array(
-        'name' => 'Middle Content Title',
-        'desc' => 'Shows up on the side',
-        'id'   => $prefix . 'middle_title',
+        'name' => 'Middle Content Left Title',
+        'desc' => 'Shows up on the left side',
+        'id'   => $prefix . 'middle_title_left',
         'type' => 'text',
       ),
       array(
-        'name' => 'Middle Content',
-        'desc' => 'Shows up on the side',
-        'id'   => $prefix . 'middle_content',
+        'name' => 'Middle Content Left',
+        'desc' => 'Shows up on the left side',
+        'id'   => $prefix . 'middle_content_left',
+        'type' => 'wysiwyg',
+      ),
+      array(
+        'name' => 'Middle Content Right Title',
+        'desc' => 'Shows up on the right side',
+        'id'   => $prefix . 'middle_title_right',
+        'type' => 'text',
+      ),
+      array(
+        'name' => 'Middle Content Right',
+        'desc' => 'Shows up on the right side',
+        'id'   => $prefix . 'middle_content_right',
         'type' => 'wysiwyg',
       ),
     ),

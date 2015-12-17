@@ -9,8 +9,10 @@
   $intro_title_right = get_post_meta($post->ID, '_cmb2_intro_title_right', true);
   $intro_content_right = get_post_meta($post->ID, '_cmb2_intro_content_right', true);
   // Middle content areas
-  $middle_title = get_post_meta($post->ID, '_cmb2_middle_title', true);
-  $middle_content = get_post_meta($post->ID, '_cmb2_middle_content', true);
+  $middle_title_left = get_post_meta($post->ID, '_cmb2_middle_title_left', true);
+  $middle_content_left = get_post_meta($post->ID, '_cmb2_middle_content_left', true);
+  $middle_title_right = get_post_meta($post->ID, '_cmb2_middle_title_right', true);
+  $middle_content_right = get_post_meta($post->ID, '_cmb2_middle_content_right', true);
 ?>
 
 <div class="site-grid grid">
@@ -52,9 +54,11 @@
 
       <div class="content-right flex-item one-half">
         
-        <?= !empty($intro_title_right) ? '<h2>' . $intro_title_right . '</h2>' : ''; ?>
-        <div class="user-content">
-          <?php if ($intro_content_right) { echo apply_filters('the_content', $intro_content_right); } ?>
+        <div class="stat">
+          <div class="stat-content">          
+            <?= !empty($intro_title_right) ? '<h3>' . $intro_title_right . '</h3>' : ''; ?>
+            <?php if ($intro_content_right) { echo apply_filters('the_content', $intro_content_right); } ?>
+          </div>
         </div>
 
       </div>
@@ -64,7 +68,7 @@
   </div>
 <?php } ?>
 
-<?php if (!empty($middle_content)) { ?>
+<?php if (!empty($middle_content_left)) { ?>
   <div class="visit-section middle-content secondary-content site-grid grid">
 
     <div class="main-gutter main-column-left"><svg class="icon icon-energy"><use xlink:href="#icon-energy"></svg></div>
@@ -73,18 +77,21 @@
       
       <div class="content-left flex-item one-half">
 
-        <?= !empty($middle_title) ? '<h2>' . $middle_title . '</h2>' : ''; ?>
+        <?= !empty($middle_title_left) ? '<h2>' . $middle_title_left . '</h2>' : ''; ?>
         <div class="user-content">
-          <?php if ($middle_content) { echo apply_filters('the_content', $middle_content); } ?>
+          <?php if ($middle_content_left) { echo apply_filters('the_content', $middle_content_left); } ?>
         </div>
 
       </div>
 
       <div class="content-right flex-item one-half">
         
-        <div class="user-content">
-
+      <div class="stat">
+        <div class="stat-content">          
+          <?= !empty($middle_title_right) ? '<h3>' . $middle_title_right . '</h3>' : ''; ?>
+          <?php if ($middle_content_right) { echo apply_filters('the_content', $middle_content_right); } ?>
         </div>
+      </div>
 
       </div>
 

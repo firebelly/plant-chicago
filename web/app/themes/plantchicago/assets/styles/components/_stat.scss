@@ -1,0 +1,23 @@
+// Stat Module
+
+.stat {
+  width: 354px;
+  height: 354px;
+  color: $white;
+  display: flex;
+  text-align: center;
+  background-size: cover;
+  background-position: top left;
+  .stat-content {
+    margin: auto;
+    padding: 30px 25% 0;
+  }
+  h3 {
+    margin: 0;
+    @extend h1;
+    line-height: 1em;
+  }
+  p {
+    margin: 0;
+  }
+}

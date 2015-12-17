@@ -3,6 +3,20 @@
 .page.tour {
   @include colorScheme($red, $brand-secondary);
 
+  .intro-section {
+    .content-right {
+      display: none;
+      @include min-screen($breakpoint-medium) {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+      }
+    }
+    .stat {
+      background-image: url('../images/tourstat1.png');
+    }
+  }
+
   .visit-section {
     background: $red-lite;
     h3 {
@@ -14,6 +28,21 @@
         background: $red-lite;
       }
     }
+
+    .content-right {
+      display: none;
+      @include min-screen($breakpoint-medium) {
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+    .stat {
+      margin: auto;
+      background-image: url('../images/tourstat2.png');
+      h3 {
+        color: $white;
+      }
+    }
   }
 
   .projects-section {
@@ -22,15 +51,19 @@
         padding: 0;
 
         .project {
-          flex-grow: 1;
-          flex-basis: 0;
 
           h3 {
             color: $red;
           }
 
           @include min-screen($breakpoint-medium) {
+            flex-basis: 50%;
             padding-right: 30px;
+          }
+
+          @include min-screen(1200px) {
+            flex-grow: 1;
+            flex-basis: 0;
           }
         }
       }
