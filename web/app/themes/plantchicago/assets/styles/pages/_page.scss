@@ -93,6 +93,16 @@ body:not(.home) {
           }
         }
       }
+
+      > .one-half {
+        .user-content .one-half {
+          @include max-screen(900px) {
+            float: none;
+            width: 100%;
+            max-width: none;
+          }
+        }
+      }
     }
 
     .secondary-content {
