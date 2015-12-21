@@ -16,10 +16,10 @@
   &:hover,
   &:focus {
     .arrow {
-      &::after {
+      &:after {
         left: 1px;
       }
-      &.-long::after {
+      &.-long:after {
         left: -.19em;
         letter-spacing: .1em;
       }
@@ -32,10 +32,10 @@
     transform: translateY(-50%);
     &:hover,
     &:focus {
-      &::after {
+      &:after {
         left: -1px;
       }
-      &.-long::after {
+      &.-long:after {
         left: 0;
         letter-spacing: 0;
       }
@@ -63,11 +63,7 @@
   background: none;
   position: relative;
   display: inline-block;
-  &::before,
-  &::after {
-    transition: box-shadow .2s ease-out, color .2s ease-out;
-  }
-  &::before {
+  &:before {
     top: 2px;
     right: 6px;
     width: 8px;
@@ -75,9 +71,10 @@
     content: '';
     position: absolute;
     transform: rotate(-45deg);
+    transition: box-shadow .2s ease-out;
     box-shadow: 2px 2px 0 $color, 3px 2px 0 $color, 2px 3px 0 $color, 3px 3px 0 $color;
   }
-  &::after {
+  &:after {
     width: 0;
     height: 0;
     left: -1px;
@@ -87,25 +84,29 @@
     line-height: 0;
     font-size: 14px;
     position: absolute;
-    transition: left .1s ease-out, bottom .1s ease-out, letter-spacing .1s ease-out;
+    transition: left .1s ease-out, bottom .1s ease-out, letter-spacing .1s ease-out, color .2s ease-out;
   }
   
   &.-long {
     width: 22px;
-    &::after {
+    &:after {
       left: 0;
       content: '•••';
       text-align: right;
     }
   }
+
+  &.-left {
+    transform: rotate(180deg);
+  }
   
   &:hover,
   &:focus {
     outline: none;
-    &::after {
+    &:after {
       left: 1px;
     }
-    &.-long::after {
+    &.-long:after {
       left: -.19em;
       letter-spacing: .1em;
     }

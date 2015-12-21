@@ -31,6 +31,75 @@ body.single {
     }
   }
 
+  .post-nav-container {
+    position: relative;
+  }
+  .post-nav {
+    left: 0;
+    right: 0;
+    top: 50%;
+    display: none; // hide on small screen for now
+    position: absolute;
+    @include min-screen($breakpoint-medium) {
+      display: block;
+    }
+    &:hover,
+    &:focus {
+      .arrow-wrap {
+        border-color: $brand-secondary;
+      }
+      .arrow {
+        &:before {
+          box-shadow: 2px 2px 0 $brand-secondary, 3px 2px 0 $brand-secondary, 2px 3px 0 $brand-secondary, 3px 3px 0 $brand-secondary;
+        }
+        &:after {
+          color: $brand-secondary;
+        }
+      }
+      .text {
+        color: $brand-secondary;
+      }
+    }
+    > div {
+      top: 0;
+      position: absolute;
+      display: inline-block;
+    }
+    a {
+      text-decoration: none;
+      display: inline-block;
+      transform: translateY(-50%);
+    }
+    .previous {
+      left: -12.5%;
+      transform: translateX(-50%);
+    }
+    .next {
+      right: -12.5%;
+      transform: translateX(50%);
+    }
+    .arrow-wrap {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      border-radius: 50%;
+      text-align: center;
+      border: 2px solid $white;
+      transition: border-color .2s ease-out;
+    }
+    .arrow {
+      margin: auto;
+      @include arrow($white);
+    }
+    .text {
+      display: block;
+      font-size: 11px;
+      margin-top: 10px;
+      text-align: center;
+      transition: color .2s ease-out;
+    }
+  }
+
   article {
     position: relative;
     @include clearfix();

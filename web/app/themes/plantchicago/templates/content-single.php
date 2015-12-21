@@ -12,10 +12,16 @@
 
   <article <?php post_class(); ?>>
 
-    <?php if (has_post_thumbnail()) {
-      $thumb = wp_get_attachment_url(get_post_thumbnail_id());
-      echo '<div class="article-image" style="background-image:url('.$thumb.');"></div>';
-    } ?>
+    <div class="post-nav-container">    
+      <?php if (has_post_thumbnail()) {
+        $thumb = wp_get_attachment_url(get_post_thumbnail_id());
+        echo '<div class="article-image" style="background-image:url('.$thumb.');"></div>';
+      } ?>
+      <div class="post-nav">
+        <div class="previous"><?php previous_post_link('%link', '<span class="arrow-wrap"><span class="arrow -long -left"></span></span><span class="text">Previous</span>'); ?></div>
+        <div class="next"><?php next_post_link('%link', '<span class="arrow-wrap"><span class="arrow -long"></span></span><span class="text">Next</span>'); ?></div>
+      </div>
+    </div>
 
     <main>
       <header>
