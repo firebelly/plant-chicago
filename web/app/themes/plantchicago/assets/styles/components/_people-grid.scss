@@ -165,6 +165,7 @@
 
   .-column-right {
     padding: 30px;
+    position: relative;
   }
 
   .person-data {
@@ -194,6 +195,69 @@
     color: $white;
     p {
       margin-top: 0;
+    }
+  }
+
+  .post-nav {
+    left: 0;
+    right: 0;
+    top: 130px;
+    display: none; // hide on small screen for now
+    position: absolute;
+    @include min-screen($breakpoint-medium) {
+      display: block;
+    }
+    > div {
+      top: 0;
+      cursor: pointer;
+      position: absolute;
+      display: inline-block;
+      &:hover,
+      &:focus {
+        .arrow-wrap {
+          border-color: $brand-secondary;
+        }
+        .arrow {
+          &:before {
+            box-shadow: 2px 2px 0 $brand-secondary, 3px 2px 0 $brand-secondary, 2px 3px 0 $brand-secondary, 3px 3px 0 $brand-secondary;
+          }
+          &:after {
+            color: $brand-secondary;
+          }
+        }
+        .text {
+          color: $brand-secondary;
+        }
+      }
+    }
+    .previous {
+      left: -$column;
+      transform: translateX(-50%);
+    }
+    .next {
+      right: $column;
+      transform: translateX(50%);
+    }
+    .arrow-wrap {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      border-radius: 50%;
+      text-align: center;
+      border: 2px solid $white;
+      transition: border-color .2s ease-out;
+    }
+    .arrow {
+      margin: auto;
+      @include arrow($white);
+    }
+    .text {
+      color: $white;
+      display: block;
+      font-size: 11px;
+      margin-top: 10px;
+      text-align: center;
+      transition: color .2s ease-out;
     }
   }
 

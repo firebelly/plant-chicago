@@ -33,6 +33,29 @@ var PlantChicago = (function($) {
     // _initLoadMore();
     _injectSvgSprite();
     _initPeopleModals();
+    // People/post nav arrow handlers
+    // Next
+    $(document).keydown(function(e) {
+      if (e.keyCode === 39) {
+        if ($('.person.-active').length) {
+          _nextPerson();
+        } else if ($('body').is('.single') && $('.post-nav .next a').length) {
+          var $postLink = $('.post-nav .next a').attr('href');
+          window.location = $postLink;
+        }
+      }
+    });
+    // Previous
+    $(document).keydown(function(e) {
+      if (e.keyCode === 37) {
+        if ($('.person.-active').length) {
+          _prevPerson();
+        } else if ($('body').is('.single') && $('.post-nav .previous a').length) {
+          var $postLink = $('.post-nav .previous a').attr('href');
+          window.location = $postLink;
+        }
+      }
+    });
 
     // Esc handlers
     $(document).keyup(function(e) {
@@ -173,33 +196,30 @@ var PlantChicago = (function($) {
   }
 
   function _initPeopleModals() {
-    $('.person-toggle').on('click', function(e) {
+    $('.person-activate').on('click', function(e) {
       var $activeContainer = $('.active-person-container'),
-          $activeDataContainer = $activeContainer.find('.person-data-container');
+          $activeDataContainer = $activeContainer.find('.person-data-container'),
+          $thisPerson = $(this).closest('.person'),
+          $personData = $thisPerson.find('.person-data'),
+          thisPersonOffset = -(($('.people-section').offset().top) - ($thisPerson.offset().top));
 
-      if ($(this).is('.person-activate')) {
-        _showOverlay();
-        var $thisPerson = $(this).closest('.person'),
-            $personData = $thisPerson.find('.person-data'),
-            thisPersonOffset = -(($('.people-section').offset().top) - ($thisPerson.offset().top));
+      _showOverlay();
 
-        $activeDataContainer.empty();
-        $thisPerson.addClass('-active');
-        $personData.clone().appendTo($activeDataContainer);
-        $activeContainer.css('top', thisPersonOffset);
-        $activeContainer.addClass('-active');
-        _scrollBody($activeContainer, 500, 0);
+      $('.person.-active, .people-grid.-active').removeClass('-active');
+      $activeDataContainer.empty();
+      $thisPerson.addClass('-active');
+      $thisPerson.closest('.people-grid').addClass('-active');
+      $personData.clone().appendTo($activeDataContainer);
+      $activeContainer.css('top', thisPersonOffset);
+      $activeContainer.addClass('-active');
+      _scrollBody($activeContainer, 500, 0);
+    }); 
 
-
-      } else {
-
-        _closePerson();
-        _hideOverlay();
-
-      }
- 
+    // Shut it down!
+    $('html, body').on('click', '.person-deactivate', function(e) {
+      _closePerson();
+      _hideOverlay();
     });
-
     // Close if user clicks outside modal
     $('html, body').on('click', '.global-overlay', function() {
       if($('.active-person-container').is('.-active')) {
@@ -207,6 +227,28 @@ var PlantChicago = (function($) {
       }
     });
 
+    // People Grid navigation
+    $('.next-person').on('click', function(e) {
+      _nextPerson();
+    });
+    $('.previous-person').on('click', function(e) {
+      _prevPerson();
+    });
+
+  }
+
+  function _nextPerson() {
+    var $active = $('.people-grid.-active').find('.person.-active');
+    // find next or first person
+    var $next = ($active.next('.person').length > 0) ? $active.next('.person') : $('.people-grid.-active .person:first');
+    $next.find('.person-activate').trigger('click');
+  }
+
+  function _prevPerson() {
+    var $active = $('.people-grid.-active').find('.person.-active');
+    // find prev or last person
+    var $prev = ($active.prev('.person').length > 0) ? $active.prev('.person') : $('.people-grid.-active .person:last');
+    $prev.find('.person-activate').trigger('click');
   }
 
   function _showOverlay() {
@@ -224,6 +266,7 @@ var PlantChicago = (function($) {
     _hideOverlay();
     $activeContainer.removeClass('-active');
     $('.person.-active').removeClass('-active');
+    $('.person-grid.-active').removeClass('-active');
     $activeDataContainer.empty();
   }
 

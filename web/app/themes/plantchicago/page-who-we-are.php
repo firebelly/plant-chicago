@@ -72,6 +72,10 @@
   <div class="active-person-container site-grid grid">
     <div class="main-gutter main-column-left"></div>
     <div class="-column-right">
+      <div class="post-nav">
+        <div class="previous previous-person"><span class="arrow-wrap"><span class="arrow -long -left"></span></span><span class="text">Previous</span></div>
+        <div class="next next-person"><span class="arrow-wrap"><span class="arrow -long"></span></span><span class="text">Next</span></div>
+      </div>
       <button class="person-deactivate person-toggle x-button"><div class="x"></div></button>
       <div class="row">
         <h2 class="active-person-header">Staff: Details</h2>
