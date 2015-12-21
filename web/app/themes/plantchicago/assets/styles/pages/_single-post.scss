@@ -43,27 +43,27 @@ body.single {
     @include min-screen($breakpoint-medium) {
       display: block;
     }
-    &:hover,
-    &:focus {
-      .arrow-wrap {
-        border-color: $brand-secondary;
-      }
-      .arrow {
-        &:before {
-          box-shadow: 2px 2px 0 $brand-secondary, 3px 2px 0 $brand-secondary, 2px 3px 0 $brand-secondary, 3px 3px 0 $brand-secondary;
-        }
-        &:after {
-          color: $brand-secondary;
-        }
-      }
-      .text {
-        color: $brand-secondary;
-      }
-    }
     > div {
       top: 0;
       position: absolute;
       display: inline-block;
+      &:hover,
+      &:focus {
+        .arrow-wrap {
+          border-color: $brand-secondary;
+        }
+        .arrow {
+          &:before {
+            box-shadow: 2px 2px 0 $brand-secondary, 3px 2px 0 $brand-secondary, 2px 3px 0 $brand-secondary, 3px 3px 0 $brand-secondary;
+          }
+          &:after {
+            color: $brand-secondary;
+          }
+        }
+        .text {
+          color: $brand-secondary;
+        }
+      }
     }
     a {
       text-decoration: none;
