@@ -30,9 +30,9 @@ var PlantChicago = (function($) {
     _initNav();
     _initBigClicky();
     _initSearch();
-    // _initLoadMore();
     _injectSvgSprite();
     _initPeopleModals();
+
     // People/post nav arrow handlers
     // Next
     $(document).keydown(function(e) {
@@ -61,7 +61,6 @@ var PlantChicago = (function($) {
     $(document).keyup(function(e) {
       if (e.keyCode === 27) {
         _hideSearch();
-        _hideMobileNav();
         _closePerson();
       }
     });
@@ -119,11 +118,15 @@ var PlantChicago = (function($) {
 
   function _initSearch() {
     $('.search-toggle').on('click', function() {
-      if ($('.search-form').hasClass('-active')) {
-        $('.search-form').removeClass('-active');
-      } else {
-        $('.search-form').addClass('-active');
-        $('.search-field:first').focus();
+      $('.site-header .search-form').addClass('-active');
+      $('.site-header .search-field:first').focus();
+    });
+
+    // Hide header search form when clicking away
+    $('html, body').on('click', function(e) {
+      if ($('.site-header .search-form').is('.-active') && !$(e.target).closest('.search-toggle').length) {
+        console.log(e.target);
+        _hideSearch(); 
       }
     });
 
@@ -143,55 +146,6 @@ var PlantChicago = (function($) {
     $('.nav-toggle').on('click', function(e) {
       $('body, .site-header, .nav-toggle').toggleClass('nav-open');
       $('.site-nav').toggleClass('-active');
-    });
-  }
-
-  function _showMobileNav() {
-    $('.nav-toggle').addClass('nav-open');
-    $('.site-nav').addClass('-active');
-  }
-
-  function _hideMobileNav() {
-    $('.nav-toggle').removeClass('nav-open');
-    $('.site-nav').removeClass('-active');
-  }
-
-  function _initLoadMore() {
-    $document.on('click', '.load-more a', function(e) {
-      e.preventDefault();
-      var $load_more = $(this).closest('.load-more');
-      var post_type = $load_more.attr('data-post-type') ? $load_more.attr('data-post-type') : 'news';
-      var page = parseInt($load_more.attr('data-page-at'));
-      var per_page = parseInt($load_more.attr('data-per-page'));
-      var category = $load_more.attr('data-category');
-      var more_container = $load_more.parents('section,main').find('.load-more-container');
-      loadingTimer = setTimeout(function() { more_container.addClass('loading'); }, 500);
-
-      $.ajax({
-          url: wp_ajax_url,
-          method: 'post',
-          data: {
-              action: 'load_more_posts',
-              post_type: post_type,
-              page: page+1,
-              per_page: per_page,
-              category: category
-          },
-          success: function(data) {
-            var $data = $(data);
-            if (loadingTimer) { clearTimeout(loadingTimer); }
-            more_container.append($data).removeClass('loading');
-            if (breakpoint_medium) {
-              more_container.masonry('appended', $data, true);
-            }
-            $load_more.attr('data-page-at', page+1);
-
-            // Hide load more if last page
-            if ($load_more.attr('data-total-pages') <= page + 1) {
-                $load_more.addClass('hide');
-            }
-          }
-      });
     });
   }
 

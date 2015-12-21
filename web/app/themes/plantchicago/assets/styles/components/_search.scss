@@ -28,7 +28,6 @@
 }
 
 .search-form {
-  z-index: 1;
   width: 100%;
   margin-top: 24px;
   position: relative;
@@ -70,6 +69,19 @@
   }
 
   @include min-screen($breakpoint-nav) {
+
+    input {
+      height: 72px;
+      line-height: 72px;
+      padding-right: 70px;
+    }
+  }
+}
+
+// Header search
+.site-header .search-form {
+  z-index: 1;
+  @include min-screen($breakpoint-nav) {
     top: 0;
     right: 0;
     margin-top: 0;
@@ -85,12 +97,6 @@
       transform: translateX(0);
     }
 
-    input {
-      height: 72px;
-      line-height: 72px;
-      padding-right: 70px;
-    }
-
     .search-submit {
       display: none;
     }
@@ -98,7 +104,17 @@
     .close-button {
       top: 18px;
       right: 17px;
+      display: block;
+      cursor: pointer;
       position: absolute;
     }
+  }
+}
+
+// Search forms within a page
+.content .search-form {
+  margin-bottom: 30px;
+  input {
+    outline: 1px solid $brand-secondary;
   }
 }
