@@ -27,7 +27,7 @@ add_filter( 'pre_get_posts', __NAMESPACE__ . '\\search_queries' );
  * Check if post is not top-level page
  */
 function is_top_level_page($post) {
-  if (is_single($post) || is_home($post) || is_search($post) || is_archive($post)) {
+  if (is_single($post) || is_home($post) || is_search($post) || is_archive($post) || is_404($post)) {
     return true;
   } else {
     return false;

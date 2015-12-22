@@ -47,6 +47,9 @@
 body:not(.home) {
 
   .site-main {
+    @include min-screen($breakpoint-medium) {
+      min-height: 200px;
+    }
 
     .main-column-left {
 
