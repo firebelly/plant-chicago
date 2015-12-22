@@ -66,7 +66,7 @@ $event = \Firebelly\PostTypes\Event\get_event_details($post);
         </div>
 
         <?php if ($event->registration_url) { ?>
-          <a href="<?= $event->registration_url ?>" class="btn registration-link">RSVP</a>
+          <a href="<?= $event->registration_url ?>" class="btn registration-link"><?= $event->registration_link_text ?></a>
         <?php } ?>
 
       </main>

@@ -73,6 +73,44 @@
   }
 }
 
+// Categories list
+.categories-list {
+  margin-bottom: 30px;
+  h3 {
+    font-size: 16px;
+    margin: 0 4px 0 0;
+    color: $brand-primary;
+    display: inline-block;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    li {
+      list-style: none;
+      position: relative;
+      display: inline-block;
+      &:first-of-type {
+        &:before {
+          display: none;
+        }
+      }
+      &:before {
+        margin: 0 4px;
+        color: $black;
+        content: ' | ';
+      }
+      a {
+        transition: color .2s ease-out;
+        &:hover,
+        &:focus {
+          color: $brand-primary;
+        }
+      }
+    }
+  }
+}
+
 // Post navigation
 nav.pagination {
   margin-top: 30px;

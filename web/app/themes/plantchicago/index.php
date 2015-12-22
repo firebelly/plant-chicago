@@ -17,6 +17,13 @@
 
       <div class="content-left flex-item one-half">
         <h2>News Archive</h2>
+  
+        <div class="categories-list">        
+          <h3>Categories:</h3>
+          <ul>
+            <?= wp_list_categories('title_li='); ?>
+          </ul>
+        </div>
 
         <div class="news-grid">
 

@@ -210,6 +210,13 @@ function metaboxes( array $meta_boxes ) {
           'type'    => 'text',
       ),
       array(
+          'name'    => 'Registration Link Text',
+          'desc'    => 'The text that shows up on the link (ex: "RSVP")',
+          'default' => 'RSVP',
+          'id'      => $prefix . 'registration_link_text',
+          'type'    => 'text',
+      ),
+      array(
           'name'    => 'Registration Link',
           'id'      => $prefix . 'registration_url',
           'type'    => 'text',
@@ -308,6 +315,7 @@ function get_event_details($post) {
     'venue' => get_post_meta($post->ID, '_cmb2_venue', true),
     'lat' => get_post_meta($post->ID, '_cmb2_lat', true),
     'lng' => get_post_meta($post->ID, '_cmb2_lng', true),
+    'registration_link_text' => get_post_meta($post->ID, '_cmb2_registration_link_text', true),
     'registration_url' => get_post_meta($post->ID, '_cmb2_registration_url', true),
   ];
   // Is this event multiple days?
