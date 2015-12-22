@@ -45,7 +45,7 @@
     "wpackagist-plugin/akismet": ">=3.1.1",
     "wpackagist-plugin/redirection": ">=2.3.16",
     "wpackagist-plugin/update-from-bottom": ">=1.0.3",
-    "wpackagist-plugin/wp-migreat-db": ">=0.7.2",
+    "wpackagist-plugin/wp-migrate-db": ">=0.7.2",
     "wpackagist-plugin/wordpress-seo": ">=3.0.6"
   },
   "extra": {
