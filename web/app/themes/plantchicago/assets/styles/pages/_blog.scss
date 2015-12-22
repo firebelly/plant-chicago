@@ -101,10 +101,11 @@
         content: ' | ';
       }
       a {
+        text-decoration: none;
         transition: color .2s ease-out;
         &:hover,
         &:focus {
-          color: $brand-primary;
+          color: $brand-secondary;
         }
       }
     }

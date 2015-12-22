@@ -54,10 +54,14 @@
 
       <div class="content-right flex-item one-half">
         
-        <?= !empty($intro_title_right) ? '<h2>' . $intro_title_right . '</h2>' : ''; ?>
-        <div class="user-content">
-          <?php if ($intro_content_right) { echo apply_filters('the_content', $intro_content_right); } ?>
-        </div>
+        <?php if ($intro_content_right) { ?>
+          <div class="stat">
+            <div class="stat-content">          
+              <?= !empty($intro_title_right) ? '<h3>' . $intro_title_right . '</h3>' : ''; ?>
+              <?= apply_filters('the_content', $intro_content_right); ?>
+            </div>
+          </div>
+        <?php } ?>
 
       </div>
 

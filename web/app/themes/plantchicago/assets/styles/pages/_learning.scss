@@ -3,6 +3,20 @@
 .page.learning {
   @include colorScheme($blue, $brand-secondary);
 
+  .intro-section {
+    .content-right {
+      display: none;
+      @include min-screen($breakpoint-medium) {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+      }
+    }
+    .stat {
+      background-image: url('../images/learningstat1.png');
+    }
+  }
+  
   .bottom-content {
     background: $blue-lite;
     h3 {

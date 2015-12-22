@@ -54,12 +54,14 @@
 
       <div class="content-right flex-item one-half">
         
-        <div class="stat">
-          <div class="stat-content">          
-            <?= !empty($intro_title_right) ? '<h3>' . $intro_title_right . '</h3>' : ''; ?>
-            <?php if ($intro_content_right) { echo apply_filters('the_content', $intro_content_right); } ?>
+        <?php if ($intro_content_right) { ?>
+          <div class="stat">
+            <div class="stat-content">          
+              <?= !empty($intro_title_right) ? '<h3>' . $intro_title_right . '</h3>' : ''; ?>
+              <?= apply_filters('the_content', $intro_content_right); ?>
+            </div>
           </div>
-        </div>
+        <?php } ?>
 
       </div>
 
@@ -86,12 +88,14 @@
 
       <div class="content-right flex-item one-half">
         
-      <div class="stat">
-        <div class="stat-content">          
-          <?= !empty($middle_title_right) ? '<h3>' . $middle_title_right . '</h3>' : ''; ?>
-          <?php if ($middle_content_right) { echo apply_filters('the_content', $middle_content_right); } ?>
-        </div>
-      </div>
+        <?php if ($middle_content_right) { ?>
+          <div class="stat">
+            <div class="stat-content">          
+              <?= !empty($middle_title_right) ? '<h3>' . $middle_title_right . '</h3>' : ''; ?>
+              <?= apply_filters('the_content', $middle_content_right); ?>
+            </div>
+          </div>
+        <?php } ?>
 
       </div>
 

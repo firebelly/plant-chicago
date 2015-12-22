@@ -23,6 +23,15 @@
       color: $red;
     }
 
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
+        line-height: 1.5em;
+      }
+    }
+
     .pricing-table {
       td span {
         background: $red-lite;
