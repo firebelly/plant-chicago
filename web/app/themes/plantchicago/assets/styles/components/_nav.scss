@@ -35,10 +35,10 @@
       }
     }
     a {
-      display: block;
       padding: 8px 0;
       font-size: 18px;
       position: relative;
+      display: inline-block;
       text-decoration: none;
       transition: color .1s ease-out;
       // Underline
@@ -70,7 +70,7 @@
     width: 45%;
     bottom: -36px;
     position: absolute;
-    padding: 100px 30px 30px 30px;
+    padding: 120px 30px 30px 30px;
 
     .nav {
       a {
@@ -126,9 +126,12 @@
   background: none;
   position: absolute;
   -webkit-appearence: none;
+  @include min-screen($breakpoint-medium) {
+    top: 0;
+  }
   @include min-screen($breakpoint-nav) {
     display: none;
-  }  
+  }
   &:focus, &:active {
     outline: none;
   }
