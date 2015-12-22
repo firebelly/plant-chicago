@@ -117,7 +117,7 @@ var PlantChicago = (function($) {
   }
 
   function _initSearch() {
-    $('.search-toggle').on('click', function() {
+    $('.search-toggle').on('click, focus', function() {
       $('.site-header .search-form').addClass('-active');
       $('.site-header .search-field:first').focus();
     });
@@ -128,6 +128,11 @@ var PlantChicago = (function($) {
         console.log(e.target);
         _hideSearch(); 
       }
+    });
+
+    // Hide on blur
+    $('.site-header .search-field').on('blur', function(e) {
+      _hideSearch();
     });
 
     $('.search-form .close-button').on('click', function() {
