@@ -1,6 +1,13 @@
 <div class="site-grid grid">
   
-  <div class="main-column-left -top"></div>
+  <div class="main-column-left -top">
+    <div class="header-gutter-icons">
+      <svg class="icon icon-community"><use xlink:href="#icon-community"></svg>
+      <svg class="icon icon-plants"><use xlink:href="#icon-plants"></svg>
+      <svg class="icon icon-community"><use xlink:href="#icon-community"></svg>
+      <svg class="icon icon-plants"><use xlink:href="#icon-plants"></svg>
+    </div>
+  </div>
 
   <div class="main-column-right -top">
     

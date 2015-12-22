@@ -106,6 +106,8 @@
     h2 {
       font-size: 30px;
       line-height: 1.2em;
+      font-family: $display;
+      text-transform: uppercase;
     }
 
     @include min-screen($breakpoint-medium) {

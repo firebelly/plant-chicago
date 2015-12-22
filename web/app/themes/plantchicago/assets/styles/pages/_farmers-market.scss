@@ -2,4 +2,15 @@
 
 .page.farmers-market {
   @include colorScheme($brand-secondary, $brand-primary);
+
+  .intro-section {
+    .content-right {
+      h3 {
+        margin-bottom: 0;
+      }
+      p {
+        margin-top: 0;
+      }
+    }
+  }
 }
