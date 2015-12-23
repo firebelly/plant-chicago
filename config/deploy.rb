@@ -1,6 +1,6 @@
 set :application, 'plant'
 set :theme, 'plantchicago'
-set :login, 'firebelly'
+set :login, 'plantchicago'
 set :repo_url, 'git@github.com:firebelly/plant-chicago.git'
 
 # Hardcodes branch to always be master
