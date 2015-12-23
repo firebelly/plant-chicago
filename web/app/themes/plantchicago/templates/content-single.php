@@ -30,7 +30,7 @@
           <?php get_template_part('templates/entry-meta'); ?>
         </div>
       </header>
-      <div class="article-content">
+      <div class="article-content user-content">
         <?php the_content(); ?>
       </div>
       <footer>
