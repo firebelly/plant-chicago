@@ -60,8 +60,12 @@ var PlantChicago = (function($) {
     // Esc handlers
     $(document).keyup(function(e) {
       if (e.keyCode === 27) {
-        _hideSearch();
-        _closePerson();
+        if ($('.site-header .search-form.-active').length) {
+          _hideSearch();
+        }
+        if ($('.person.-active').length) {
+          _closePerson();
+        }
       }
     });
 
