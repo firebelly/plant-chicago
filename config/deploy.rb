@@ -1,4 +1,4 @@
-set :application, 'plant'
+set :application, 'plantchicago'
 set :theme, 'plantchicago'
 set :login, 'plantchicago'
 set :repo_url, 'git@github.com:firebelly/plant-chicago.git'
