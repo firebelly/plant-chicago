@@ -28,39 +28,39 @@ $event = \Firebelly\PostTypes\Event\get_event_details($post);
       <main>
         <header>
           <h1 class="article-title"><?= $post->post_title ?></h1>
-        </header>
-        <div class="article-meta">
-          <?php if ($event->price) { ?>
-          <h3 class="sr-only">Price:</h3>
-          <p><?= $event->price ?></p>
-          <?php } ?>
-          <div class="grid">
-            <div class="one-half">
-              <h3 class="sr-only">When:</h3>
-              <?php if ($event->multiple_days) { ?>
-                <p><?= date('l', $event->event_start) ?>, <?= date('m/d/y', $event->event_start) ?>
-                <br><em>through</em>
-                <br><?= date('l', $event->event_start) ?>, <?= date('m/d/y', $event->event_end) ?>
-                <br><?= $event->time_txt ?> Daily</p>
-              <?php } else { ?>
-                <p><?= date('l', $event->event_start) ?>
-                <br><?= date('m/d/y', $event->event_start) ?>
-                <br><?= $event->time_txt ?></p>
-              <?php } ?>
+          <div class="article-meta">
+            <?php if ($event->price) { ?>
+            <h3 class="sr-only">Price:</h3>
+            <p class="event-price"><?= $event->price ?></p>
+            <?php } ?>
+            <div class="grid">
+              <div class="one-half">
+                <h3 class="sr-only">When:</h3>
+                <?php if ($event->multiple_days) { ?>
+                  <p><?= date('l', $event->event_start) ?>, <?= date('m/d/y', $event->event_start) ?>
+                  <br><em>through</em>
+                  <br><?= date('l', $event->event_start) ?>, <?= date('m/d/y', $event->event_end) ?>
+                  <br><?= $event->time_txt ?> Daily</p>
+                <?php } else { ?>
+                  <p><?= date('l', $event->event_start) ?>
+                  <br><?= date('m/d/y', $event->event_start) ?>
+                  <br><?= $event->time_txt ?></p>
+                <?php } ?>
+              </div>
+              <div class="one-half">
+                <h3 class="sr-only">Where:</h3>
+                <p><?= $event->venue ?>
+                <br><?= $event->address['address-1'] ?>
+                <?php if (!empty($event->address['address-2'])): ?>
+                  <br><?= $event->address['address-2'] ?>
+                <?php endif; ?>
+                <br><?= $event->address['city'] ?>, <?= $event->address['state'] ?> <?= $event->address['zip'] ?>
+                </p>
+              </div>
             </div>
-            <div class="one-half">
-              <h3 class="sr-only">Where:</h3>
-              <p><?= $event->venue ?>
-              <br><?= $event->address['address-1'] ?>
-              <?php if (!empty($event->address['address-2'])): ?>
-                <br><?= $event->address['address-2'] ?>
-              <?php endif; ?>
-              <br><?= $event->address['city'] ?>, <?= $event->address['state'] ?> <?= $event->address['zip'] ?>
-              </p>
-            </div>
-          </div>
 
-        </div>
+          </div>
+        </header>
         <div class="entry-content user-content">
           <?= $event->body ?>
         </div>

@@ -116,6 +116,54 @@ body.single {
       margin-bottom: 30px;
     }
 
+    header {
+      margin-bottom: 30px;
+    }
+
+    .user-content {
+      h2, h3 {
+        margin-bottom: 1em;
+        color: $brand-primary;
+      }
+
+      img, img:first-child {
+        margin: 15px 0;
+      }
+
+      ul, ol {
+        padding-left: 0;
+      }
+
+      .button a {
+        margin: 30px 0;
+        @include button($white, $brand-secondary);
+      }
+
+      figure, figure:first-child {
+        margin: 30px 0;
+      }
+
+      figure > img,
+      figure >img:first-child {
+        margin: 0;
+      }
+
+      figcaption {
+        font-size: 11px;
+        line-height: 1.636363636;
+      }
+
+      blockquote {
+        padding: 20px 0;
+        p {
+          font-size: 24px;
+          margin-bottom: 0;
+          color: $brand-primary;
+          font-family: $display;
+        }
+      }
+    }
+
     @include min-screen($breakpoint-medium) {
       main {
         width: 75%;
@@ -150,6 +198,10 @@ body.single {
 
   .article-meta {
     color: $brand-primary;
+  }
+
+  .event-price {
+    margin: 0;
   }
 
   .registration-link {
