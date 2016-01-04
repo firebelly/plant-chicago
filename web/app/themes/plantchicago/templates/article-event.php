@@ -8,7 +8,7 @@ $event_url = get_permalink($event_post);
       <span class="-inner">      
         <span class="day"><?= date('D', $event->event_start) ?></span> 
         <span class="date"><?= date('m/d/y', $event->event_start) ?></span>
-        <span class="time"><?= date('g:iA', $event->event_start) ?></span>
+        <span class="time"><?= date('g:ia', $event->event_start) ?></span>
       </span>
     </time>
     <div class="article-content-wrap"> 

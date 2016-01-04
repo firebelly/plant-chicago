@@ -320,8 +320,8 @@ function get_event_details($post) {
   ];
   // Is this event multiple days?
   $event['multiple_days'] = (date('Y-m-d', $event['event_start']) != date('Y-m-d', $event['event_end']));
-  $event['start_time'] = date('g:iA', $event['event_start']);
-  $event['end_time'] = date('g:iA', $event['event_end']);
+  $event['start_time'] = date('g:ia', $event['event_start']);
+  $event['end_time'] = date('g:ia', $event['event_end']);
   if ($event['start_time'] != $event['end_time']) {
     $event['time_txt'] = $event['start_time'] . '–' . $event['end_time'];
   } else {
