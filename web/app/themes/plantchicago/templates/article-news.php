@@ -14,7 +14,7 @@ $has_image_class = !empty($show_images) && has_post_thumbnail($news_post->ID) ? 
         <h1 class="article-title"><a href="<?= get_the_permalink($news_post); ?>"><?= wp_trim_words($news_post->post_title, 10); ?></a></h1>
         <div class="article-meta">        
           <time class="article-date" datetime="<?= date('c', $post_date_timestamp); ?>">
-            <span class="date"><?= date('d/m/y', $post_date_timestamp) ?></span>
+            <span class="date"><?= date('m/d/y', $post_date_timestamp) ?></span>
           </time> | <?php if ($category): ?><span class="article-category"><a href="<?= get_term_link($category); ?>"><?= $category->name; ?></a></span><?php endif; ?>
         </div>
       </header>

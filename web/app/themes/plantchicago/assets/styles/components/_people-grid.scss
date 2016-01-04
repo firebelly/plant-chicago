@@ -170,6 +170,18 @@
 
   .person-data {
     @extend .grid;
+    &.exitRight {
+      animation: exitRight .2s forwards;
+    }
+    &.exitLeft {
+      animation: exitLeft .2s forwards;
+    }
+    &.enterRight {
+      animation: enterRight .2s forwards;
+    }
+    &.enterLeft {
+      animation: enterLeft .2s forwards;
+    }
   }
 
   .active-person-header {

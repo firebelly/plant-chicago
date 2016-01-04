@@ -192,10 +192,16 @@ var PlantChicago = (function($) {
 
     // People Grid navigation
     $('.next-person').on('click', function(e) {
-      _nextPerson();
+      $('.active-person-container .person-data').addClass('exitLeft');
+      setTimeout(function() {
+        _nextPerson();
+      }, 200);
     });
     $('.previous-person').on('click', function(e) {
-      _prevPerson();
+      $('.active-person-container .person-data').addClass('exitRight');
+      setTimeout(function() {
+        _prevPerson();
+      }, 200);
     });
 
   }
@@ -205,6 +211,7 @@ var PlantChicago = (function($) {
     // find next or first person
     var $next = ($active.next('.person').length > 0) ? $active.next('.person') : $('.people-grid.-active .person:first');
     $next.find('.person-activate').trigger('click');
+    $('.active-person-container .person-data').addClass('enterRight');
   }
 
   function _prevPerson() {
@@ -212,6 +219,7 @@ var PlantChicago = (function($) {
     // find prev or last person
     var $prev = ($active.prev('.person').length > 0) ? $active.prev('.person') : $('.people-grid.-active .person:last');
     $prev.find('.person-activate').trigger('click');
+    $('.active-person-container .person-data').addClass('enterLeft');
   }
 
   function _showOverlay() {
