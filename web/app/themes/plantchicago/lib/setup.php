@@ -15,7 +15,6 @@ function setup() {
   add_theme_support('soil-nice-search');
   // add_theme_support('soil-jquery-cdn');
   add_theme_support('soil-relative-urls');
-  add_theme_support('soil-google-analytics', 'UA-24151152', 'wp_footer');
 
   // Make theme available for translation
   // Community translations can be found at https://github.com/roots/sage-translations
@@ -50,6 +49,9 @@ function setup() {
   add_editor_style(Assets\asset_path('styles/main.css'));
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
+
+// Google analytics
+add_theme_support('soil-google-analytics', 'UA-24151152', 'wp_footer');
 
 /**
  * Register sidebars

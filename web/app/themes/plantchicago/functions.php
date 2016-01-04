@@ -28,7 +28,7 @@ $firebelly_includes = [
   'lib/page-meta-boxes.php',           // Various tweaks for multiple post types
   'lib/post-meta-boxes.php',           // Various tweaks for multiple post types
   'lib/event-post-type.php',           // Events
-  'lib/person-post-type.php',           // Staff & Board
+  'lib/person-post-type.php',          // Staff & Board
 ];
 
 $sage_includes = array_merge($sage_includes, $firebelly_includes);
