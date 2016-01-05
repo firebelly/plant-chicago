@@ -16,13 +16,22 @@
       }
     }
 
-    .person-activate {
+    .person-activate.x-button {
       top: 0;
       right: 0;
       &:hover,
       &:focus {
         // Thumb
         + .person-data .thumb-wrap .thumb-hover {
+          opacity: 1;
+        }
+      }
+    }
+    .person-activate {
+      cursor: pointer;
+      &:hover,
+      &:focus {
+        .thumb-wrap .thumb-hover {
           opacity: 1;
         }
       }

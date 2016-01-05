@@ -7,7 +7,7 @@ $body = apply_filters('the_content', $post->post_content);
 ?>
 <article data-url="<?= get_permalink($post) ?>" id="<?= $post->post_name ?>">
   <button class="person-activate person-toggle x-button -plus"><div class="x"></div></button>
-  <div class="person-data" id="<?= $post->post_name ?>">
+  <div class="person-data person-activate person-toggle" id="<?= $post->post_name ?>">
     <div class="thumb-wrap">
       <div class="thumb" <?= $thumb ?>><?= $photo ?></div>
       <div class="thumb-hover" <?= $thumb_hover ?>></div>
