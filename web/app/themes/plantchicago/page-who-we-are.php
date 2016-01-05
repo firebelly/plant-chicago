@@ -90,12 +90,12 @@
 
   <div class="main-column-right">
 
-    <div class="row staff">
+    <div class="row staff" id="staff">
       <h2>Staff</h2>    
       <?= \Firebelly\PostTypes\Person\get_people(['member_type' => 'staff']); ?>
     </div>
 
-    <div class="row board">
+    <div class="row board" id="board">
       <h2>Board of Directors</h2>    
       <?= \Firebelly\PostTypes\Person\get_people(['member_type' => 'board']); ?>
     </div>
