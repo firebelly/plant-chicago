@@ -77,7 +77,7 @@
 
     <div class="main-column-right grid">
       
-      <div class="content-left flex-item one-half">
+      <div class="content-left flex-item one-half" id="volunteer">
 
         <?= !empty($bottom_title_left) ? '<h2>' . $bottom_title_left . '</h2>' : ''; ?>
         <div class="user-content">
@@ -86,7 +86,7 @@
 
       </div>
 
-      <div class="content-right flex-item one-half">
+      <div class="content-right flex-item one-half" id="internships">
         
         <?= !empty($bottom_title_right) ? '<h2>' . $bottom_title_right . '</h2>' : ''; ?>
         <div class="user-content">
