@@ -51,7 +51,7 @@ function setup() {
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
 // Google analytics
-add_theme_support('soil-google-analytics', 'UA-24151152', 'wp_footer');
+add_theme_support('soil-google-analytics', 'UA-24151152-1', 'wp_head');
 
 /**
  * Register sidebars
