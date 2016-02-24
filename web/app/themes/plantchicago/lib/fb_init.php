@@ -47,6 +47,10 @@ function site_options() {
                 <td><input type="text" id="instagram_id" name="instagram_id" size="45" value="<?php echo get_option('instagram_id'); ?>" /></td>
               </tr>
               <tr>
+                <th scope="row"><label for="contact_phone">Contact Phone Number</label></th>
+                <td><input type="text" id="contact_phone" name="contact_phone" size="45" value="<?php echo get_option('contact_phone'); ?>" /><br>
+              </tr>
+              <tr>
                 <th scope="row"><label for="contact_email">Contact Email</label></th>
                 <td><input type="text" id="contact_email" name="contact_email" size="45" value="<?php echo get_option('contact_email'); ?>" /><br>
               </tr>
@@ -54,7 +58,7 @@ function site_options() {
           <p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes" /></p>
 
           <input type="hidden" name="action" value="update" />
-          <input type="hidden" name="page_options" value="twitter_id,facebook_id,instagram_id,contact_email" />
+          <input type="hidden" name="page_options" value="twitter_id,facebook_id,instagram_id,contact_phone,contact_email" />
         </form>
     </div>
 <?php
