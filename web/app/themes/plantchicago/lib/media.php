@@ -6,7 +6,7 @@
 namespace Firebelly\Media;
 
 // image size for popout thumbs
-add_image_size( 'popout-thumb', 200, 200, ['center', 'top'] );
+add_image_size( 'popout-thumb', 360, 360, ['center', 'top'] );
 
 /**
  * Get thumbnail image for post
@@ -28,17 +28,18 @@ function get_post_thumbnail($post_id, $size='medium') {
  * @return HTML            background image code
  */
 function get_header_bg($post_or_image, $thumb_id='', $options=[]) {
-  if (empty($options['color'])) {
-    $color = PAGE_COLOR;
-  } else {
-    $color = $options['color'];
-  }
+
+  $defaults = ['color' => PAGE_COLOR, 'size'=>'full' ];
+  $options = wp_parse_args($options,$defaults);
+  $color = $options['color'];
+  $size = $options['size'];
+
   $header_bg = $background_image = false;
   // If WP post object, get the featured image
   if (is_object($post_or_image)) {
     if (has_post_thumbnail($post_or_image->ID)) {
       $thumb_id = get_post_thumbnail_id($post_or_image->ID);
-      $background_image = get_attached_file($thumb_id, 'full', true);
+      $background_image = wp_get_attachment_image_src($thumb_id, $size)[0];
     }
   } else {
     // These are sent from a taxonomy page
@@ -60,7 +61,7 @@ function get_header_bg($post_or_image, $thumb_id='', $options=[]) {
         mkdir($base_dir);
       }
       $convert_command = (WP_ENV==='development') ? '/usr/local/bin/convert' : '/usr/bin/convert';
-      exec($convert_command.' '.$background_image.' +profile "*" -resize 1400x -quality 65 -colorspace gray -level +10% +level-colors "#414141","#'.$color.'" '.$treated_image);
+      exec($convert_command.' '.$background_image.' +profile "*" -quality 65 -modulate 100,0 -size 256x1! gradient:#414141-#'.$color.' -clut '.$treated_image);
     }    
     $header_bg = ' style="background-image:url(' . $upload_dir['baseurl'] . '/backgrounds/' . $treated_filename . ');"';
   }

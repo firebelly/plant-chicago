@@ -1,7 +1,7 @@
 <?php 
 $photo = get_the_post_thumbnail($post->ID);
-$thumb = \Firebelly\Media\get_header_bg($post, '', ['color' => '4cba7a']);
-$thumb_hover = \Firebelly\Media\get_header_bg($post, '', ['color' => 'ffc932']);
+$thumb = \Firebelly\Media\get_header_bg($post, '', ['color' => '4cba7a', 'size' => 'popout-thumb']);
+$thumb_hover = \Firebelly\Media\get_header_bg($post, '', ['color' => 'ffc932', 'size' => 'popout-thumb']);
 $subtitle = get_post_meta( $post->ID, '_cmb2_subtitle', true );
 $body = apply_filters('the_content', $post->post_content);
 ?>
