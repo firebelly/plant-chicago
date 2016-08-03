@@ -121,16 +121,17 @@ var PlantChicago = (function($) {
   }
 
   function _initSearch() {
-    $('.search-toggle').on('click, focus', function() {
+    $('.search-toggle').on('click', function() {
       $('.site-header .search-form').addClass('-active');
-      $('.site-header .search-field:first').focus();
+      setTimeout( function() {
+        // $('.site-header .search-field:first').focus();
+      },500);
     });
 
     // Hide header search form when clicking away
-    $('html, body').on('click', function(e) {
-      if ($('.site-header .search-form').is('.-active') && !$(e.target).closest('.search-toggle').length) {
-        console.log(e.target);
-        _hideSearch(); 
+    $('body').on('click', function(e) {
+      if ($('.site-header .search-form').is('.-active') && !$(e.target).closest('.search-toggle').length && !$(e.target).closest('.search-form').length) {
+        // _hideSearch(); 
       }
     });
 
