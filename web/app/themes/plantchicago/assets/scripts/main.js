@@ -120,6 +120,8 @@ var PlantChicago = (function($) {
     });
   }
 
+  var _searchFocusTimeout; // A var to hold the timeouts we'll use to autofocus this.  We will need to reference it to clear it.
+
   function _initSearch() {
 
     // Show on click or focus of search-toggle
@@ -150,11 +152,12 @@ var PlantChicago = (function($) {
       _hideSearch();
     });
   }
-  
+
   function _openSearch() {
     if(!$('.site-header .search-form').hasClass('-active')) {
       $('.site-header .search-form').addClass('-active');
-      setTimeout( function() {
+      clearTimeout( _searchFocusTimeout );
+      _searchFocusTimeout = setTimeout( function() {
         $('.site-header .search-field').focus();
       },500);
     }
@@ -162,6 +165,7 @@ var PlantChicago = (function($) {
 
   function _hideSearch() {
     $('.search-form').removeClass('-active');
+    clearTimeout( _searchFocusTimeout );
     if( $('.search-form .search-field').is(':focus') ){ // Must test for this or we will recursively blur (_hideSearch is called on blur)
       $('.search-form .search-field').blur();
     }
