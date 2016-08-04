@@ -33,7 +33,7 @@
   position: relative;
 
   input {
-    outline-offset: 0;
+    outline-offset: 0; // Prevents resizing of outline on focus in Chrome
     width: 100%;
     border: none;
     height: 36px;
