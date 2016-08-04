@@ -124,14 +124,14 @@ var PlantChicago = (function($) {
     $('.search-toggle').on('click', function() {
       $('.site-header .search-form').addClass('-active');
       setTimeout( function() {
-        // $('.site-header .search-field:first').focus();
+        $('.site-header .search-field:first').focus();
       },500);
     });
 
     // Hide header search form when clicking away
     $('body').on('click', function(e) {
       if ($('.site-header .search-form').is('.-active') && !$(e.target).closest('.search-toggle').length && !$(e.target).closest('.search-form').length) {
-        // _hideSearch(); 
+        _hideSearch(); 
       }
     });
 
