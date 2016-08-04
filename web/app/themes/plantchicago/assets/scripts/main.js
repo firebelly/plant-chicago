@@ -121,15 +121,21 @@ var PlantChicago = (function($) {
   }
 
   function _initSearch() {
-    $('.search-toggle').on('click, focus', function() {
-      $('.site-header .search-form').addClass('-active');
-      $('.site-header .search-field:first').focus();
+
+    // Show on click or focus of search-toggle
+    $('.search-toggle').on('click focus', function(e) {
+      e.preventDefault();
+      _openSearch();
+    });
+
+    // Show on focus of field itself
+    $('.site-header .search-field').focus(function(e){
+      _openSearch();
     });
 
     // Hide header search form when clicking away
-    $('html, body').on('click', function(e) {
-      if ($('.site-header .search-form').is('.-active') && !$(e.target).closest('.search-toggle').length) {
-        console.log(e.target);
+    $('body').on('click', function(e) {
+      if ($('.site-header .search-form').is('.-active') && !$(e.target).closest('.search-toggle').length && !$(e.target).closest('.site-header .search-field').length) {
         _hideSearch(); 
       }
     });
@@ -139,14 +145,26 @@ var PlantChicago = (function($) {
       _hideSearch();
     });
 
+    // Hide with close button
     $('.search-form .close-button').on('click', function() {
       _hideSearch();
     });
   }
+  
+  function _openSearch() {
+    if(!$('.site-header .search-form').hasClass('-active')) {
+      $('.site-header .search-form').addClass('-active');
+      setTimeout( function() {
+        $('.site-header .search-field').focus();
+      },500);
+    }
+  }
 
   function _hideSearch() {
     $('.search-form').removeClass('-active');
-    $('.search-field').blur();
+    if( $('.search-form .search-field').is(':focus') ){ // Must test for this or we will recursively blur (_hideSearch is called on blur)
+      $('.search-form .search-field').blur();
+    }
   }
 
   // Handles main nav

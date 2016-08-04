@@ -172,6 +172,7 @@
     right: 0;
     bottom: 0;
     position: absolute;
+    transform: translateZ(0); // A hack to keep the :before and :after (which because rotated involve fractional pixels) from dancing around on screen resize due to browser rounding in Chrome
     &:before,
     &:after {
       left: 50%;
