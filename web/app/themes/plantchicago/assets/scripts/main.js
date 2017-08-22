@@ -1,4 +1,5 @@
 // PlantChicago - Firebelly 2015
+/*jslint latedef:false*/
 
 // Good Design for Good Reason for Good Namespace
 var PlantChicago = (function($) {
