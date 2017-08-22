@@ -129,7 +129,7 @@ function simplify_tinymce($settings) {
     ),
     array( 
       'title' => 'Subscript',
-      'block' => 'sub',
+      'inline' => 'sub',
       'classes' => 'subscript',
     ),
     // array( 
