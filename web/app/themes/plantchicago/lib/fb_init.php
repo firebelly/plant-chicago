@@ -127,6 +127,11 @@ function simplify_tinymce($settings) {
       'block' => 'span',
       'classes' => 'button',
     ),
+    array( 
+      'title' => 'Subscript',
+      'block' => 'sub',
+      'classes' => 'subscript',
+    ),
     // array( 
     //   'title' => '» Arrow Link',
     //   'block' => 'span',
