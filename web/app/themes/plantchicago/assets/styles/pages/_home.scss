@@ -15,7 +15,34 @@
         position: absolute;
         background-image: linear-gradient(rgba(black,0), $black);
       }
+
     }
+
+    .main-column-right {
+      display: block;
+    }
+
+    .photo-credit {
+      margin-top: 30px;
+
+      @include min-screen($breakpoint-medium) {
+        bottom: 0;
+        margin-bottom: 0;
+        position: absolute;
+      }
+
+      @include min-screen($breakpoint-nav) {
+        bottom: 40px;
+        margin-top: 0;
+      }
+    }
+
+    .header-text {
+      @include min-screen(1200px) {
+        max-width: 55%;
+      }
+    }
+
   }
 
   .site-main {

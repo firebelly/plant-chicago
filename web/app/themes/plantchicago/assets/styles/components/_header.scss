@@ -40,9 +40,12 @@
     position: absolute;
   }
   .main-column-right {
+    height: 100%;
+    display: flex;
     position: static;
+    align-items: flex-end;
     @include min-screen($breakpoint-nav) {
-      overflow: hidden;
+      display: block;
       padding-right: 30px;
     }
   }
@@ -126,7 +129,23 @@
     }
   }
 
-  @include min-screen($breakpoint-small) {
+  .photo-credit {
+    margin: 0;
+    font-size: 11px;
+    white-space: nowrap;
+
+    @include min-screen($breakpoint-medium) {
+      margin-bottom: 288px;
+    }
+
+    @include min-screen($breakpoint-nav) {
+      margin: 0;
+      bottom: 40px;
+      position: absolute;
+      left: calc(-13.3333% - 36px);
+      transform: rotate(90deg) translate(-100%,50%);
+      transform-origin: bottom left;
+    }
   }
 
   @include min-screen($breakpoint-medium) {

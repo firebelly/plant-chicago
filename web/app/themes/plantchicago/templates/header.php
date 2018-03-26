@@ -13,6 +13,7 @@ if (\Firebelly\Utils\is_top_level_page($post)) {
   $background_page = $post;
 }
 $header_bg = \Firebelly\Media\get_header_bg($background_page, ['color' => PAGE_COLOR]);
+$photo_credit = get_post(get_post_thumbnail_id($background_page))->post_excerpt;
 
 ?>
 
@@ -62,6 +63,12 @@ $header_bg = \Firebelly\Media\get_header_bg($background_page, ['color' => PAGE_C
           <?= apply_filters('the_content', $header_text); ?>
         </div>
       <?php } ?>
+
+      <?php
+        if (!empty($photo_credit)) {
+          echo '<p class="photo-credit">Photography by ' . $photo_credit . '</p>';
+        }
+      ?>
     </div>
 
   </div>
