@@ -32,7 +32,7 @@
 
         <div class="content-right flex-item one-half">    
           <div class="visit">
-            <h3>Visit us at The Plant</h3>
+            <h3>Visit us at <em>The Plant</em></h3>
             <address class="vcard"> 
               <a target="_blank" href="https://goo.gl/maps/RRoM9Dco5BC2">1400 W 46th St, Chicago, IL 60609</a>
             </address>
