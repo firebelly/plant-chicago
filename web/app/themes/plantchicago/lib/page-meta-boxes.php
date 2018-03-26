@@ -221,11 +221,19 @@ function metaboxes( array $meta_boxes ) {
    * Repeating Tech Demo Project blocks for the Tours page
    */
   $cmb_group = new_cmb2_box( array(
-    'id'           => $prefix . 'metabox',
-    'title'        => __( 'Current Tech Demo Projects', 'cmb2' ),
+    'id'            => $prefix . 'metabox',
+    'title'         => __( 'Tour Projects', 'cmb2' ),
     'show_on'       => array( 'key' => 'id', 'value' => 10 ), // Only show on 'Tour' page
     'priority'      => 'low',
-    'object_types' => array( 'page', ),
+    'object_types'  => array( 'page', ),
+    'fields'        => array(
+      array(
+        'name' => 'Tour Projects Title',
+        'desc' => 'The headline for the tour projects section',
+        'id'   => $prefix . 'tour_projects_headline',
+        'type' => 'text',
+      ),
+    ),
   ) );
 
   $group_field_id = $cmb_group->add_field( array(

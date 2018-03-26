@@ -13,6 +13,8 @@
   $middle_content_left = get_post_meta($post->ID, '_cmb2_middle_content_left', true);
   $middle_title_right = get_post_meta($post->ID, '_cmb2_middle_title_right', true);
   $middle_content_right = get_post_meta($post->ID, '_cmb2_middle_content_right', true);
+  // Tour Projects Section
+  $tour_projects_headline = get_post_meta($post->ID, '_cmb2_tour_projects_headline', true);
 ?>
 
 <div class="site-grid grid">
@@ -110,7 +112,7 @@
 
     <div class="main-column-right">
 
-      <h2>current tech demonstration projects</h2>
+      <h2><?= (!empty($tour_projects_headline)) ? $tour_projects_headline : 'current tech demonstration projects' ?></h2>
       
       <div class="project-list grid row">
 
