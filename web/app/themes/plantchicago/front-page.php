@@ -2,7 +2,7 @@
 /**
  * Template Name: Homepage
  */
-
+$featured_events = \Firebelly\PostTypes\Event\get_events(['num_posts' => 1, 'featured_events' => true]); 
 ?>
 
 <div class="site-grid grid">
@@ -21,28 +21,38 @@
       <?= apply_filters('the_content', $post->post_content); ?>
     </div>
 
-    <div class="events-list content-right flex-item one-half">
-      <h2>Upcoming Events</h2>
-      <?php if (!have_posts()) : ?>
-        <div class="alert alert-warning">
-          <?php _e('Sorry, no results were found.', 'sage'); ?>
-        </div>
-        <?php get_search_form(); ?>
-      <?php endif; ?>
-
-      <?php 
-        $events = \Firebelly\PostTypes\Event\get_events(['num_posts' => 4]); 
-        if ($events) {
-          echo  $events,
-                '<a href="news-events" class="btn">See more <span class="arrow -right"></span></a>';
-        } else {
-          echo  '<div class="no-events">',
-                '<p>There are no upcoming events at the moment,<br> check back soon!</p>',
-                '<svg class="pattern"><rect x="0" y="0" width="100%" height="36" fill="url(#footerPattern)"></svg>',
-                '</div><!--.no-events-->';
-        }
-      ?>
+    <div class="content-right flex-item one-half">
       
+      <?php if (!empty($featured_events)) { ?>
+        <div class="featured-event events-list">
+          <h2>Featured Event:</h2>
+          <?= $featured_events ?>
+        </div>
+      <?php } ?>
+
+      <div class="events-list">
+        <h2>Upcoming Events</h2>
+        <?php if (!have_posts()) : ?>
+          <div class="alert alert-warning">
+            <?php _e('Sorry, no results were found.', 'sage'); ?>
+          </div>
+          <?php get_search_form(); ?>
+        <?php endif; ?>
+
+        <?php 
+          $events = \Firebelly\PostTypes\Event\get_events(['num_posts' => 4]); 
+          if ($events) {
+            echo  $events,
+                  '<a href="news-events" class="btn">See more <span class="arrow -right"></span></a>';
+          } else {
+            echo  '<div class="no-events">',
+                  '<p>There are no upcoming events at the moment,<br> check back soon!</p>',
+                  '<svg class="pattern"><rect x="0" y="0" width="100%" height="36" fill="url(#footerPattern)"></svg>',
+                  '</div><!--.no-events-->';
+          }
+        ?>
+        
+      </div>
     </div>
 
   </div>

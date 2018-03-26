@@ -46,7 +46,7 @@ function post_type() {
     'show_in_nav_menus'   => true,
     'show_in_admin_bar'   => true,
     'menu_position'       => 20,
-    'menu_icon'           => 'dashicons-admin-post',
+    'menu_icon'           => 'dashicons-calendar-alt',
     'can_export'          => false,
     'has_archive'         => true,
     'exclude_from_search' => false,
@@ -91,10 +91,41 @@ function edit_columns($columns){
     'title' => 'Title',
     'event_dates' => 'Date',
     '_cmb2_venue' => 'Venue',
+    'featured' => 'Featured Event',
   );
   return $columns;
 }
 add_filter('manage_event_posts_columns', __NAMESPACE__ . '\edit_columns');
+
+function featured_event_column_content( $column_name, $post_id ) {
+    if ( 'featured' != $column_name )
+        return;
+
+    $featured = get_post_meta($post_id, '_cmb2_featured_event', true);
+    if ($featured === 'on') {
+      echo 'Featured';
+    }
+}
+add_action( 'manage_event_posts_custom_column', __NAMESPACE__ . '\featured_event_column_content', 10, 2 );
+
+function sortable_featured_column( $columns ) {
+    $columns['featured'] = 'featured';
+    return $columns;
+}
+add_filter( 'manage_edit-event_sortable_columns', __NAMESPACE__ . '\sortable_featured_column' );
+
+function featured_orderby( $query ) {
+    if( ! is_admin() )
+        return;
+ 
+    $orderby = $query->get( 'orderby');
+ 
+    if( 'featured' == $orderby ) {
+        $query->set('meta_key','_cmb2_featured_event');
+        $query->set('orderby','meta_value_num');
+    }
+}
+add_action( 'pre_get_posts', __NAMESPACE__ . '\featured_orderby' );
 
 function custom_columns($column){
   global $post;
@@ -124,6 +155,22 @@ add_action('manage_posts_custom_column',  __NAMESPACE__ . '\custom_columns');
  */
 function metaboxes( array $meta_boxes ) {
   $prefix = '_cmb2_'; // Start with underscore to hide from custom fields list
+
+  $meta_boxes['featured_event'] = array(
+    'id'            => 'featured_event',
+    'title'         => __( 'Event Featured on Homepage?', 'cmb2' ),
+    'object_types'  => array( 'event', ), // Post type
+    'context'       => 'side',
+    'priority'      => 'high',
+    'show_names'    => true, // Show field names on the left
+    'fields'        => array(
+      array(
+          'name'    => 'Featured',
+          'id'      => $prefix . 'featured_event',
+          'type'    => 'checkbox',
+      )
+    ),
+  );
 
   $meta_boxes['event_summary'] = array(
     'id'            => 'event_summary',
@@ -249,6 +296,22 @@ function get_events($options=[]) {
       'compare' => (!empty($options['past_events']) ? '<=' : '>')
     ]
   ];
+
+  if (!empty($options['featured_events'])) {
+    $args['meta_query'] = [
+      'relation' => 'AND',
+      array(
+        'key' => '_cmb2_featured_event',
+        'value' => 'on',
+        'compare' => '='
+      ),
+      array(
+        'key' => '_cmb2_event_end',
+        'value' => current_time('timestamp'),
+        'compare' => (!empty($options['past_events']) ? '<=' : '>')
+      )
+    ];
+  }
 
   // Display all matching events using article-event.php
   $event_posts = get_posts($args);

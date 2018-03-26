@@ -57,8 +57,7 @@
       }
     }
 
-    .content-left,
-    .content-right {
+    .content-left {
       padding: 30px;
       @include min-screen($breakpoint-medium) {
         padding: 60px 0;
@@ -81,12 +80,31 @@
       }
     }
     .content-right {
+      position: relative;
+
+      .events-list {
+        padding: 30px;
+      }
+
+      .featured-event {
+        padding-bottom: 60px;
+      }
 
       @include min-screen($breakpoint-medium) {
         max-width: 45%;
         flex-basis: 45%;
-        padding-left: 60px;
-        padding-right: 30px;
+
+        .events-list {
+          padding-top: 60px;
+          padding-left: 60px;
+          padding-right: 30px;
+        }
+
+        .featured-event {
+          overflow: hidden;
+          max-height: 590px;
+          padding-bottom: 100px;
+        }
       }
     }
   }
@@ -120,6 +138,17 @@
     .btn {
       margin-top: 30px;
       @include button($black, $brand-secondary);
+    }
+
+    // Featured event
+    &.featured-event {
+      color: $white;
+      background: $black;
+
+      h2,
+      .article-title a {
+        color: $brand-primary;
+      }
     }
   }
 
