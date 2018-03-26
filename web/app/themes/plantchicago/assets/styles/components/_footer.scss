@@ -12,6 +12,10 @@
   }
 
   .main-column-right {
+    @include min-screen($breakpoint-medium) {
+      padding-right: 30px;
+    }
+
     .grid {
       flex-wrap: wrap;
     }
@@ -27,6 +31,21 @@
   .content-right {
     padding-right: 30px;
     justify-content: space-between;
+  }
+
+  .footer-section {
+    .main-column-right .-inner {
+      margin-top: 30px; 
+      padding-top: 30px;
+      border-top: 2px solid $white;
+    }
+    &:first-of-type {
+      .main-column-right .-inner {      
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+      }
+    }
   }
 
   .footer-logo {
@@ -59,7 +78,7 @@
     margin: 0;
   }
 
-  p, address, a {
+  p, address {
     font-size: 11px;
     font-weight: 200;
     font-family: $sans;
@@ -191,5 +210,12 @@
       }
     }
 
+  }
+}
+
+// Sponsors Section
+.sponsors-section {
+  h3 {
+    margin-bottom: 30px;
   }
 }

@@ -28,6 +28,8 @@ $firebelly_includes = [
   'lib/page-meta-boxes.php',           // Various tweaks for multiple post types
   'lib/post-meta-boxes.php',           // Various tweaks for multiple post types
   'lib/event-post-type.php',           // Events
+  'lib/sponsor-post-type.php',         // Sponsors
+  'lib/sponsor-category-taxonomy.php', // Sponsor Category Taxonomy
   'lib/person-post-type.php',          // Staff & Board
 ];
 

@@ -1,0 +1,55 @@
+// Sponsors List
+.sponsors-grid {
+  margin: 0 0 0 -30px;
+  width: calc(100% + 30px);
+  @include min-screen($breakpoint-medium) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .sponsor-category {
+    padding-left: 30px;
+  }
+}
+
+.sponsors-list {
+  padding: 0;
+  list-style: none;
+
+  .sponsor {
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 30px;
+
+    .logo {
+      margin-right: 10px;
+      display: inline-block;
+      img {
+        width: auto;
+        max-height: 60px;
+      }
+    }
+
+    .sponsor-name {
+      margin-top: 0;
+      font-size: 11px;
+      max-width: 100px;
+      font-weight: bold;
+      margin-bottom: 1em;
+      font-family: $sans;
+      text-transform: none;
+      display: inline-block;
+      line-height: 1.636363636em;
+      a {
+        text-decoration: none;
+        &:hover,
+        &:focus,
+        &:active {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

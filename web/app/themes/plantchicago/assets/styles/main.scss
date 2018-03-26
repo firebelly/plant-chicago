@@ -33,6 +33,7 @@
 @import "components/article-list";
 @import "components/people-grid";
 @import "components/share";
+@import "components/sponsors";
 @import "components/footer";
 
 // Pages
@@ -49,4 +50,4 @@
 @import "pages/search-results";
 
 // WP specifics
-@import 'helpers/wp-classes';
+@import "helpers/wp-classes";

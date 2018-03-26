@@ -1,10 +1,11 @@
 <?php
   $phone = get_option( 'contact_phone' );
   $phoneUnformatted = preg_replace('/[^0-9]/', '', $phone);
+  $sponsors = \Firebelly\PostTypes\Sponsor\get_sponsors();
 ?>
 
 <footer class="site-footer" role="contentinfo">
-  <div class="site-grid grid">
+  <div class="footer-section site-grid grid">
 
     <div class="main-gutter main-column-left">
       <a href="<?= esc_url(home_url('/')); ?>" class="footer-logo"><svg class="icon icon-logo"><use xlink:href="#icon-logo"></svg><span class="sr-only"><?php bloginfo('name'); ?></span></a>
@@ -13,7 +14,7 @@
 
     <div class="main-column-right">
 
-      <div class="grid">
+      <div class="grid -inner">
 
         <div class="content-left flex-item one-half">
           <div class="social">
@@ -49,6 +50,30 @@
     </div>
 
   </div>
+
+  <?php if (!empty($sponsors)) { ?>
+  <div id="sponsors" class="sponsors-section footer-section site-grid grid">
+    <div class="main-gutter main-column-left"></div>
+    <div class="main-column-right">
+      <div class="-inner">      
+        <div class="sponsors-grid">
+          <?php
+
+            $sponsor_categories = get_terms( array(
+              'taxonomy' => 'sponsor_category'
+            ));
+
+            foreach ($sponsor_categories as $key => $sponsor_category) {
+              echo '<div class="sponsor-category one-third"><h3>'.$sponsor_category->name.'</span></h3>'.Firebelly\PostTypes\Sponsor\get_sponsors(['category'=>$sponsor_category->slug]).'</div>';
+            }
+
+          ?>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php } ?>
+
   <svg class="footer-pattern">
     <rect x="0" y="0" width="100%" height="36" fill="url(#footerPattern)">
   </svg>
