@@ -165,10 +165,11 @@
 
       path {
         &.x {
-          transition: .2s .2s ease-in-out;
-          transform: rotate(45deg) translate(-24%, 80px) scaleX(.7);
+          transition: all .2s .2s ease-in-out;
+          transform: rotate(45deg) translate(17%, -57%) scaleX(.75);
           &:first-of-type {
-            transform: rotate(-45deg) translate(-24%, -80px) scaleX(.7);
+            transform-origin: right center;
+            transform: rotate(-45deg) translate(-17%, -28%) scaleX(.75);
           }
         }
         &.yy {
@@ -218,9 +219,9 @@
       stroke: $white;
       stroke-width: 70;
       &.x {
-        transition: .25s 0s ease-in-out;
-        transform-origin: right center;
-        transform: rotate(0deg) translateX(0px);
+        transition: all .25s 0s ease-in-out;
+        transform-origin: left center;
+        transform: rotate(0deg) translate(0%,0%) scale(1);
       }
       &.yy {
         stroke-dashoffset: 1700;
