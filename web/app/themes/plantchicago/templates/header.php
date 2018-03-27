@@ -66,7 +66,7 @@ $photo_credit = get_post(get_post_thumbnail_id($background_page))->post_excerpt;
 
       <?php
         if (!empty($photo_credit)) {
-          echo '<p class="photo-credit">Photography by ' . $photo_credit . '</p>';
+          echo '<p class="photo-credit">' . $photo_credit . '</p>';
         }
       ?>
     </div>
