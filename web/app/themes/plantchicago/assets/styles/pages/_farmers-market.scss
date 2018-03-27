@@ -1,6 +1,7 @@
 // Farmers Market Page
 
-.page.farmers-market {
+.page.farmers-market,
+.page.page-template-page-farmers-market {
   @include colorScheme($brand-secondary, $brand-primary);
 
   .intro-section {

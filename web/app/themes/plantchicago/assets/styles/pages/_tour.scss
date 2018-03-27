@@ -1,6 +1,7 @@
 // Tour Page
 
-.page.tour {
+.page.tour,
+.page.page-template-page-tour {
   @include colorScheme($red, $brand-secondary);
 
   .intro-section {

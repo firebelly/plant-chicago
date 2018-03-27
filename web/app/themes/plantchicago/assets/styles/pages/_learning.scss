@@ -1,6 +1,7 @@
 // Learning Page
 
-.page.learning {
+.page.learning,
+.page.page-template-page-learning {
   @include colorScheme($blue, $brand-secondary);
 
   .intro-section {

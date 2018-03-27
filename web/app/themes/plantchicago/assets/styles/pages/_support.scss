@@ -1,6 +1,7 @@
 // Support Page
 
-.page.support {
+.page.support,
+.page.page-template-page-support {
   @include colorScheme($green, $brand-secondary);
 
   .intro-section {
