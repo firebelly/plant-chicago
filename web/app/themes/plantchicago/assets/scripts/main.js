@@ -194,7 +194,8 @@ var PlantChicago = (function($) {
       $personData.clone().appendTo($activeDataContainer);
       $activeContainer.css('top', thisPersonOffset);
       $activeContainer.addClass('-active');
-      _scrollBody($activeContainer, 250, 0);
+      // _scrollBody($activeContainer, 250, 0);
+      $('html, body').scrollTop($activeContainer.offset().top);
     }); 
 
     // Shut it down!
