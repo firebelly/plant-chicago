@@ -15,7 +15,7 @@ function add_capabilities() {
   $role_admin->add_cap('delete_sponsor_categories');
   $role_admin->add_cap('assign_sponsor_categories');
 }
-add_action('switch_theme', __NAMESPACE__ . '\add_capabilities');
+add_action('init', __NAMESPACE__ . '\add_capabilities');
 
 // Custom taxonomy Sponsor Categories
 register_taxonomy( 'sponsor_category', 
