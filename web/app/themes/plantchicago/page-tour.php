@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Tour
+ * Template Name: Tour/Visit
  */
 
   use Firebelly\Utils;
