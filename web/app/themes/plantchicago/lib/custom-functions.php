@@ -133,11 +133,11 @@ function get_page_blocks($post) {
  */
 function page_color() {  
   // Set global var to use when creating treated backgrounds
-  if(is_page('tour')) {
+  if(is_page_template('page-tour.php')) {
     $color = 'f9beb7';
-  } else if (is_page('learning')) {
+  } else if (is_page_template('page-learning.php')) {
     $color = 'b9e5fa';
-  } else if(is_page('farmers-market')) {
+  } else if(is_page_template('page-farmers-market.php')) {
     $color = 'ffeca9';
   } else if (get_post_type() == 'person') {
     $color = '00be73';
