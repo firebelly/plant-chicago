@@ -49,6 +49,7 @@ function metaboxes( array $meta_boxes ) {
         'desc' => 'Shows up on the left side',
         'id'   => $prefix . 'intro_content_left',
         'type' => 'wysiwyg',
+        'sanitization_cb' => false,
       ),
       array(
         'name' => 'Intro Content Right Title',
@@ -61,6 +62,7 @@ function metaboxes( array $meta_boxes ) {
         'desc' => 'Shows up on the right side',
         'id'   => $prefix . 'intro_content_right',
         'type' => 'wysiwyg',
+        'sanitization_cb' => false,
       ),
     ),
   );
