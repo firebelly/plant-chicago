@@ -31,10 +31,10 @@
           </div>
         </div>
 
-        <div class="content-right flex-item one-half">    
+        <div class="content-right flex-item one-half">
           <div class="visit">
             <h3>Visit us at <em>The Plant</em></h3>
-            <address class="vcard"> 
+            <address class="vcard">
               <a target="_blank" href="https://goo.gl/maps/RRoM9Dco5BC2">1400 W 46th St, Chicago, IL 60609</a>
             </address>
             <a href="tel:<?= $phoneUnformatted; ?>"><?= $phone ?></a> +
@@ -55,7 +55,7 @@
   <div id="sponsors" class="sponsors-section footer-section site-grid grid">
     <div class="main-gutter main-column-left"></div>
     <div class="main-column-right">
-      <div class="-inner">      
+      <div class="-inner">
         <div class="sponsors-grid">
           <?php
 
@@ -64,7 +64,7 @@
             ));
 
             foreach ($sponsor_categories as $key => $sponsor_category) {
-              echo '<div class="sponsor-category one-third"><h3>'.$sponsor_category->name.'</span></h3>'.Firebelly\PostTypes\Sponsor\get_sponsors(['category'=>$sponsor_category->slug]).'</div>';
+              echo '<div class="sponsor-category"><h3>'.$sponsor_category->name.'</span></h3>'.Firebelly\PostTypes\Sponsor\get_sponsors(['category'=>$sponsor_category->slug]).'</div>';
             }
 
           ?>

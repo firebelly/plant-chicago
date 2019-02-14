@@ -2,11 +2,6 @@
 .sponsors-grid {
   margin: 0 0 0 -30px;
   width: calc(100% + 30px);
-  @include min-screen($breakpoint-medium) {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
 
   .sponsor-category {
     padding-left: 30px;
@@ -19,28 +14,25 @@
 
   .sponsor {
     width: 100%;
-    display: flex;
     cursor: pointer;
     margin-bottom: 30px;
 
     .logo {
-      margin-right: 10px;
-      display: inline-block;
       img {
         width: auto;
         max-height: 60px;
+        vertical-align: top;
       }
     }
 
     .sponsor-name {
-      margin-top: 0;
       font-size: 11px;
+      margin-top: 10px;
       max-width: 100px;
       font-weight: bold;
       margin-bottom: 1em;
       font-family: $sans;
       text-transform: none;
-      display: inline-block;
       line-height: 1.636363636em;
       a {
         text-decoration: none;
@@ -49,6 +41,21 @@
         &:active {
           text-decoration: underline;
         }
+      }
+    }
+  }
+
+
+  @include min-screen($breakpoint-medium) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    .sponsor {
+      width: auto;
+      margin-left: 60px;
+      &:first-of-type {
+        margin-left: 0;
       }
     }
   }
