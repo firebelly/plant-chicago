@@ -1,4 +1,5 @@
 <head>
+  <?php if (WP_ENV === 'production'): ?>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-24151152-1"></script>
   <script>
@@ -15,6 +16,7 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-MHPK634');</script>
   <!-- End Google Tag Manager -->
+  <?php endif; ?>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
