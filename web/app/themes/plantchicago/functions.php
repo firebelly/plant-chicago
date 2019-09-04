@@ -18,19 +18,20 @@ $sage_includes = [
 ];
 
 $firebelly_includes = [
-  'lib/disable-comments.php',          // Disables WP comments in admin and frontend
-  'lib/fb_init.php',                   // FB theme setups
-  'lib/fb_assets.php',                 // FB assets
-  'lib/media.php',                     // FB media
-  'lib/ajax.php',                      // AJAX functions
-  'lib/custom-functions.php',          // Rando utility functions and miscellany
-  'lib/cmb2-custom-fields.php',        // Custom CMB2
-  'lib/page-meta-boxes.php',           // Various tweaks for multiple post types
-  'lib/post-meta-boxes.php',           // Various tweaks for multiple post types
-  'lib/event-post-type.php',           // Events
-  'lib/sponsor-post-type.php',         // Sponsors
-  'lib/sponsor-category-taxonomy.php', // Sponsor Category Taxonomy
-  'lib/person-post-type.php',          // Staff & Board
+  'lib/disable-comments.php',                  // Disables WP comments in admin and frontend
+  'lib/fb-disable-image-attachment-pages.php', // Disables image attachment pages
+  'lib/fb_init.php',                           // FB theme setups
+  'lib/fb_assets.php',                         // FB assets
+  'lib/media.php',                             // FB media
+  'lib/ajax.php',                              // AJAX functions
+  'lib/custom-functions.php',                  // Rando utility functions and miscellany
+  'lib/cmb2-custom-fields.php',                // Custom CMB2
+  'lib/page-meta-boxes.php',                   // Various tweaks for multiple post types
+  'lib/post-meta-boxes.php',                   // Various tweaks for multiple post types
+  'lib/event-post-type.php',                   // Events
+  'lib/sponsor-post-type.php',                 // Sponsors
+  'lib/sponsor-category-taxonomy.php',         // Sponsor Category Taxonomy
+  'lib/person-post-type.php',                  // Staff & Board
 ];
 
 $sage_includes = array_merge($sage_includes, $firebelly_includes);
