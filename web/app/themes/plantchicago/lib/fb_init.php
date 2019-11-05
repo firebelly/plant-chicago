@@ -54,11 +54,15 @@ function site_options() {
                 <th scope="row"><label for="contact_email">Contact Email</label></th>
                 <td><input type="text" id="contact_email" name="contact_email" size="45" value="<?php echo get_option('contact_email'); ?>" /><br>
               </tr>
+              <tr>
+                <th scope="row"><label for="contact_address">Contact Address</label></th>
+                <td><input type="text" id="contact_address" name="contact_address" size="45" value="<?php echo get_option('contact_address'); ?>" /><br><p>If filled in, the address will be displayed in the footer. If left blank, no address will be displayed in the footer.</p>
+              </tr>
           </table>
           <p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes" /></p>
 
           <input type="hidden" name="action" value="update" />
-          <input type="hidden" name="page_options" value="twitter_id,facebook_id,instagram_id,contact_phone,contact_email" />
+          <input type="hidden" name="page_options" value="twitter_id,facebook_id,instagram_id,contact_phone,contact_email,contact_address" />
         </form>
     </div>
 <?php
@@ -96,7 +100,7 @@ function simplify_tinymce($settings) {
     $settings['formats'] = substr($settings['formats'],0,-1).",underline: { inline: 'u', exact: true} }";
   else
     $settings['formats'] = "{ underline: { inline: 'u', exact: true} }";
-  
+
   // What goes into the toolbars. Add 'wp_adv' to get the Toolbar toggle button back
   $settings['toolbar1'] = 'styleselect,bold,italic,underline,strikethrough,formatselect,bullist,numlist,blockquote,link,unlink,hr,wp_more,outdent,indent,AccordionShortcode,AccordionItemShortcode,fullscreen';
   $settings['toolbar2'] = '';
@@ -109,35 +113,35 @@ function simplify_tinymce($settings) {
   // Clear most formatting when pasting text directly in the editor
   $settings['paste_as_text'] = 'true';
 
-  $style_formats = array( 
-    // array( 
+  $style_formats = array(
+    // array(
     //   'title' => 'Two Column',
     //   'block' => 'div',
     //   'classes' => 'two-column',
     //   'wrapper' => true,
-    // ),  
-    // array( 
+    // ),
+    // array(
     //   'title' => 'Three Column',
     //   'block' => 'div',
     //   'classes' => 'three-column',
     //   'wrapper' => true,
     // ),
-    array( 
+    array(
       'title' => 'Button',
       'block' => 'span',
       'classes' => 'button',
     ),
-    array( 
+    array(
       'title' => 'Subscript',
       'inline' => 'sub',
       'classes' => 'subscript',
     ),
-    // array( 
+    // array(
     //   'title' => '» Arrow Link',
     //   'block' => 'span',
     //   'classes' => 'arrow-link',
     // ),
- );  
+ );
   $settings['style_formats'] = json_encode($style_formats);
 
   return $settings;

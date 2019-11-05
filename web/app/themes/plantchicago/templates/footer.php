@@ -1,6 +1,8 @@
 <?php
   $phone = get_option( 'contact_phone' );
+  $address = get_option( 'contact_address' );
   $phoneUnformatted = preg_replace('/[^0-9]/', '', $phone);
+  $email = get_option( 'contact_email' );
   $sponsors = \Firebelly\PostTypes\Sponsor\get_sponsors();
 ?>
 
@@ -33,12 +35,18 @@
 
         <div class="content-right flex-item one-half">
           <div class="visit">
-            <h3>Visit us at <em>The Plant</em></h3>
-            <address class="vcard">
-              <a target="_blank" href="https://goo.gl/maps/RRoM9Dco5BC2">1400 W 46th St, Chicago, IL 60609</a>
-            </address>
-            <a href="tel:<?= $phoneUnformatted; ?>"><?= $phone ?></a> +
-            <a href="mailto:<?= get_option( 'contact_email' ); ?>"><?= get_option( 'contact_email' ); ?></a>
+            <?php if (!empty($address)): ?>
+              <h3>Visit us</h3>
+              <address class="vcard">
+                <?= $address ?>
+              </address>
+            <?php endif ?>
+            <?php if (!empty($phone)): ?>
+              <a href="tel:<?= $phoneUnformatted; ?>"><?= $phone ?></a> +
+            <?php endif ?>
+            <?php if (!empty($email)): ?>
+              <a href="mailto:<?= $email ?>"><?= $email ?></a>
+            <?php endif ?>
           </div>
           <div class="copyright">
             <p>Copyright Plant Chicago <?= date('Y'); ?><br> <em>Plant Chicago is a registered 501(c)3 organization</em></p>

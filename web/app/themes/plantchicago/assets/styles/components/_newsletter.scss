@@ -1,7 +1,11 @@
 // Newslsetter form
 
 .newsletter-form  {
-  @include clearfix();
+  @include clearfix;
+
+  .row {
+    display: flex;
+  }
 
   input,
   button {
@@ -10,8 +14,8 @@
     }
   }
 
-  input[type="email"] {
-    float: left;
+  input[type="email"],
+  input[type="text"] {
     height: 36px;
     border: none;
     color: $black;
@@ -20,6 +24,15 @@
     font-weight: 700;
     line-height: 36px;
     background: $white;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    border-bottom: 2px solid black;
+  }
+
+  input[type="email"] {
+    flex-grow: 1;
   }
 
   button[type="submit"] {

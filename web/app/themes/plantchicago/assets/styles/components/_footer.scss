@@ -14,6 +14,14 @@
   .main-column-right {
     @include min-screen($breakpoint-medium) {
       padding-right: 30px;
+
+      > .-inner {
+        align-items: flex-start;
+
+        > .content-left {
+          align-items: flex-start;
+        }
+      }
     }
 
     .grid {
@@ -35,12 +43,12 @@
 
   .footer-section {
     .main-column-right .-inner {
-      margin-top: 30px; 
+      margin-top: 30px;
       padding-top: 30px;
       border-top: 2px solid $white;
     }
     &:first-of-type {
-      .main-column-right .-inner {      
+      .main-column-right .-inner {
         margin-top: 0;
         padding-top: 0;
         border-top: none;
@@ -73,7 +81,7 @@
     text-transform: none;
     line-height: 1.636363636em;
   }
-  
+
   p {
     margin: 0;
   }
@@ -192,7 +200,7 @@
   }
 
   @include min-screen(1080px) {
-    
+
     .grid,
     .flex-item {
       align-items: flex-end;
