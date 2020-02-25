@@ -27,7 +27,7 @@ var PlantChicago = (function($) {
 
     // Fit them vids!
     $('main').fitVids();
- 
+
     _initNav();
     _initBigClicky();
     _initSearch();
@@ -80,14 +80,14 @@ var PlantChicago = (function($) {
     // Scroll down to hash afer page load
     $(window).load(function() {
       if (window.location.hash) {
-        _scrollBody($(window.location.hash)); 
+        _scrollBody($(window.location.hash));
       }
     });
 
   } // end init()
 
   function _injectSvgSprite() {
-    boomsvgloader.load('/app/themes/plantchicago/assets/svgs/build/svgs-defs.svg'); 
+    boomsvgloader.load('/app/themes/plantchicago/assets/svgs/build/svgs-defs.svg');
   }
 
   function _scrollBody(element, duration, delay) {
@@ -95,7 +95,7 @@ var PlantChicago = (function($) {
       wpOffset = $('#wpadminbar').height();
     } else {
       wpOffset = 0;
-    } 
+    }
     element.velocity("scroll", {
       duration: duration,
       delay: delay,
@@ -124,20 +124,20 @@ var PlantChicago = (function($) {
   function _initSearch() {
 
     // Show on click or focus of search-toggle
-    $('.search-toggle').on('click focus', function(e) {
+    $(document).on('click', '.search-toggle', function(e) {
       e.preventDefault();
       _openSearch();
     });
 
     // Show on focus of field itself
-    $('.site-header .search-field').focus(function(e){
+    $('.site-header .search-field').on('focus', function(e){
       _openSearch();
     });
 
     // Hide header search form when clicking away
     $('body').on('click', function(e) {
       if ($('.site-header .search-form').is('.-active') && !$(e.target).closest('.search-toggle').length && !$(e.target).closest('.site-header .search-field').length) {
-        _hideSearch(); 
+        _hideSearch();
       }
     });
 
@@ -151,7 +151,7 @@ var PlantChicago = (function($) {
       _hideSearch();
     });
   }
-  
+
   function _openSearch() {
     if(!$('.site-header .search-form').hasClass('-active')) {
       $('.site-header .search-form').addClass('-active');
@@ -196,7 +196,7 @@ var PlantChicago = (function($) {
       $activeContainer.addClass('-active');
       // _scrollBody($activeContainer, 250, 0);
       $('html, body').scrollTop($activeContainer.offset().top);
-    }); 
+    });
 
     // Shut it down!
     $('html, body').on('click', '.person-deactivate', function(e) {
