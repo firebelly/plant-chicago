@@ -1,4 +1,4 @@
-<form class="newsletter-form" action="http://plantchicago.createsend.com/t/r/s/ajdjky/" method="post">
+<form class="newsletter-form" action="https://plantchicago.createsend.com/t/r/s/ajdjky/" method="post">
   <div class="row">
     <label for="fieldName" class="sr-only">Full Name</label>
     <input type="text" aria-label="Name" id="fieldName" maxlength="200" name="cm-name" placeholder="Your first and last name" required>
